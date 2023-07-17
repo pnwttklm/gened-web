@@ -1,8 +1,8 @@
-// File: /Users/poonyawatt/On My Mac/GitHub/gened-web/frontend/app/page.js
-import * as entry from '../../../app/page.js'
+// File: /Users/poonyawatt/On My Mac/GitHub/gened-web/frontend/src/app/page.js
+import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../app/page.js')
+type TEntry = typeof import('../../../src/app/page.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
@@ -15,6 +15,7 @@ checkFields<Diff<{
   fetchCache?: 'auto' | 'force-no-store' | 'only-no-store' | 'default-no-store' | 'default-cache' | 'only-cache' | 'force-cache'
   preferredRegion?: 'auto' | 'global' | 'home' | string | string[]
   runtime?: 'nodejs' | 'experimental-edge' | 'edge'
+  maxDuration?: number
   
   metadata?: any
   generateMetadata?: Function
