@@ -10,7 +10,7 @@ import {
 export default function Card() {
     return (
         <>
-            <SimpleGrid  columns={4} spacingX='40px' spacingY='20px' minChildWidth='120px' className='px-16'>
+            <SimpleGrid  columns={4} spacingX='40px' spacingY='20px' minChildWidth='300px' className='px-16'>
             {questionElement.map((property, index) => (
               <Box maxW='sm' borderWidth='3px' borderRadius='0' borderColor='black' overflow='hidden' key={index}>
               <Image src={property.imageUrl} alt={property.imageAlt} />
@@ -71,6 +71,36 @@ export default function Card() {
 }
 
 const questionElement = [
+    {
+      imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
+      imageAlt: 'Rear view of modern home with pool',
+      beds: 3,
+      baths: 2,
+      title: 'Modern home in city center in the heart of historic Los Angeles',
+      formattedPrice: '$1,900.00',
+      reviewCount: 34,
+      rating: 4,
+    },
+    {
+      imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
+      imageAlt: 'Rear view of modern home with pool',
+      beds: 3,
+      baths: 2,
+      title: 'Modern home in city center in the heart of historic Los Angeles',
+      formattedPrice: '$1,900.00',
+      reviewCount: 34,
+      rating: 4,
+    },
+    {
+      imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
+      imageAlt: 'Rear view of modern home with pool',
+      beds: 3,
+      baths: 2,
+      title: 'Modern home in city center in the heart of historic Los Angeles',
+      formattedPrice: '$1,900.00',
+      reviewCount: 34,
+      rating: 4,
+    },
     {
       imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
       imageAlt: 'Rear view of modern home with pool',
