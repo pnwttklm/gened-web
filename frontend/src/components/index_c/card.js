@@ -10,7 +10,7 @@ import {
 export default function Card() {
     return (
         <>
-        {/* tata */}
+        {/* tata of god of years*/}
             <SimpleGrid  columns={4} spacingX='40px' spacingY='20px' minChildWidth='300px' className='px-16'>
             {questionElement.map((property, index) => (
               <Box maxW='sm' borderWidth='3px' borderRadius='0' borderColor='black' overflow='hidden' key={index}>
