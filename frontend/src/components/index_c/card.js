@@ -2,12 +2,25 @@
 import { 
     Badge,
     Box,
+    Button,
     Image,
+    Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
     SimpleGrid,
     StarIcon,
+    useDisclosure,
+
 } from '@chakra-ui/react'
 
 export default function Card() {
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
     return (
         <>
         {/* tata of god of years*/}
@@ -64,9 +77,32 @@ export default function Card() {
                   </Box>
                 </Box>
               </Box>
+              <Button mt={3} onClick={onOpen}>
+        More Information
+      </Button>
             </Box>
             ))}
             </SimpleGrid>
+
+
+
+            <Modal onClose={onClose} size={'6xl'} isOpen={isOpen}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {/* <Lorem count={2} /> */}
+            Hello World
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+
+
         </>
     )
 }
