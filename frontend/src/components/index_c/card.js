@@ -86,7 +86,7 @@ export default function Card() {
 
 
 
-            <Modal onClose={onClose} size={'6xl'} isOpen={isOpen}>
+            <Modal onClose={onClose} size="6xl" isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
