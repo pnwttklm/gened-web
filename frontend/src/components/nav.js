@@ -2,12 +2,14 @@
 
 import {
     Box,
+    Button,
+    Collapse,
     Flex,
     Text,
     IconButton,
     Stack,
-    Collapse,
     Icon,
+    Input,
     Link,
     Popover,
     PopoverTrigger,
@@ -15,7 +17,6 @@ import {
     useColorModeValue,
     useDisclosure,
     HStack,
-    Button,
 } from '@chakra-ui/react';
 
 import{
@@ -29,6 +30,8 @@ import{
 import Image from 'next/image';
 // import { motion } from "framer-motion";
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+
   
 
 export default function WithSubnavigation() {
@@ -120,7 +123,7 @@ export default function WithSubnavigation() {
     return (
       <Stack direction={'row'} spacing={{base:'0.5' , lg:'7'}} alignItems='center'>
         {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
+          <Box key={navItem.label} style={navItem.style}>
             <Popover trigger={'hover'} placement={'bottom-end'}>
               <PopoverTrigger>
                 <Link
@@ -279,12 +282,43 @@ export default function WithSubnavigation() {
       </HStack>
     );
   };
+
+
+
+  const navStyle = {
+    padding: '22px',
+  };
   
 const NAV_ITEMS= [
   {
-    label: 'เรียนรู้',
+    label: 'My Course',
     href: '/',
+    style: {...navStyle}
   },
+  {
+    label: 'รายวิชา',
+    style: {...navStyle},
+    children: [
+      {
+        label: 'sub1',
+        p: 4,
+      }
+    ]
+  },
+  {
+    label: 'เกี่ยวกับ',
+    style: {...navStyle},
+    children: [
+      {
+        label: 'sub1',
+        p: 4,
+      }
+    ]
+  },
+  {
+    label: 'ค้นหา',
+    style: {...navStyle}
+  }
 ];
 
 function isInclude() {
