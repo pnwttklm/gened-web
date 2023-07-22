@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Heading,
+  Icon,
   Image,
   Modal,
   ModalOverlay,
@@ -28,6 +29,7 @@ import {
 
 } from '@chakra-ui/react'
 import { Thasadith } from 'next/font/google'
+import { BsArrowRight } from 'react-icons/bs';
 
 export default function Card() {
 
@@ -91,8 +93,8 @@ export default function Card() {
                 </Box>
               </Box>
             </Box>
-            <Button className='m-6 border-2 border-[#000000] rounded-none hover:bg-[#000000] hover:text-[#FFFFFF]' variant='outline' mt={3} onClick={onOpen}>
-              More Information
+            <Button className='m-6 border-2 border-[#1A4789] bg-[#1A4789] text-[#FFFFFF] rounded-none hover:bg-[#FFFFFF] hover:text-[#1A4789]' variant='outline' mt={3} onClick={onOpen}>
+              More Information <Icon ml="3" as={BsArrowRight}></Icon>
             </Button>
           </Box>
         ))}
