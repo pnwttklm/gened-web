@@ -107,7 +107,8 @@ export default function Card() {
         <ModalContent className='border-2 border-[#000000] rounded-none'> 
           <ModalHeader className='font-bold'>
             {/* <Image src={property.imageUrl} alt={property.imageAlt}/> */}
-            SCGI195 Space Explor & Astrobiology
+            มสสม103
+แนวคิดและกรณีศึกษาสิทธิมนุษยชน
             </ModalHeader>
           <Stack direction='row'>
             <Badge variant='outline' rounded={'full'} className='py-1 px-2' colorScheme='blue' marginLeft={6}>Inter</Badge>
@@ -116,7 +117,7 @@ export default function Card() {
           <ModalCloseButton />
           <ModalBody>
             <TableContainer>
-              <Table variant={"simple"} size={'sm'} className=''>
+              <Table variant={"simple"} size={'sm'} >
                   <Tr>
                     <Th color={'grey'}> คณะ </Th>
                     <Th color={'grey'}> หน่วยกิต </Th>

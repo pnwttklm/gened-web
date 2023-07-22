@@ -282,7 +282,7 @@ export default function WithSubnavigation() {
   
 const NAV_ITEMS= [
   {
-    label: 'Learn',
+    label: 'เรียนรู้',
     href: '/',
   },
 ];
