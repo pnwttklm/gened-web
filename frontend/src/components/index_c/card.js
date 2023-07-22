@@ -32,14 +32,16 @@ import { Thasadith } from 'next/font/google'
 export default function Card() {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
+  
 
   return (
     <>
       {/* tata of god of years*/}
+      <div>
       <SimpleGrid columns={4} spacingX='40px' spacingY='20px' minChildWidth='300px' className='px-16'>
         {questionElement.map((property, index) => (
-          <Box maxW='sm' borderWidth='3px' borderRadius='0' borderColor='black' overflow='hidden' key={index}>
-            <Image src={property.imageUrl} alt={property.imageAlt} />
+          <Box maxW='sm' borderWidth='1px' borderRadius='0' borderColor='black' overflow='hidden' key={index}>
+            <Image src={property.imageUrl} alt={property.imageAlt}/>
 
             <Box p='6'>
               <Box display='flex' alignItems='baseline'>
@@ -89,7 +91,7 @@ export default function Card() {
                 </Box>
               </Box>
             </Box>
-            <Button mt={3} onClick={onOpen}>
+            <Button className='m-6 border-2 border-[#000000] rounded-none hover:bg-[#000000] hover:text-[#FFFFFF]' variant='outline' mt={3} onClick={onOpen}>
               More Information
             </Button>
           </Box>
@@ -100,8 +102,11 @@ export default function Card() {
 
       <Modal onClose={onClose} size="6xl" isOpen={isOpen}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader className='font-bold'>SCGI195 Space Explor & Astrobiology</ModalHeader>
+        <ModalContent className='border-2 border-[#000000] rounded-none'> 
+          <ModalHeader className='font-bold'>
+            {/* <Image src={property.imageUrl} alt={property.imageAlt}/> */}
+            SCGI195 Space Explor & Astrobiology
+            </ModalHeader>
           <Stack direction='row'>
             <Badge variant='outline' rounded={'full'} className='py-1 px-2' colorScheme='blue' marginLeft={6}>Inter</Badge>
             <Badge variant='outline' rounded={'full'} className='py-1 px-2' colorScheme='green' marginLeft={2}>Avaliable</Badge>
@@ -137,38 +142,7 @@ export default function Card() {
               </Table>
             </TableContainer>
 
-            {/*  <table class="table-auto">
-              <thead>
-                <tr>
-                  <th>คณะ</th>
-                  <th>หน่วยกิต</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>วิทยศาสตร์</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>กวดวิชา/สาขาวิชา</td>
-                  <td>หมวดวิชา/literacy</td>
-                </tr>
-                <tr>
-                  <td>Something?</td>
-                  <td>sci and env</td>
-                </tr>
-                <tr>
-                  <td>เงื่อนไขรายวิชา</td>
-                  <td>grade</td>
-                </tr>
-                <tr>
-                  <td>-</td>
-                  <td>OSU</td>
-                </tr>
-              </tbody>
-            </table>
-                  */}
-
+           
             <Stack>
               <Heading size={'md'} className='mt-5'>
                 Course Description
@@ -222,6 +196,7 @@ export default function Card() {
           </ModalFooter>
         </ModalContent>
       </Modal>
+      </div>
     </>
   )
 }
