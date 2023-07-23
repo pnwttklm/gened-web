@@ -181,7 +181,7 @@ export default function Card() {
               <Table>
                 <Tr>
                   <Th>1. {selectedItem?.insName}</Th>
-                  <Th>email: {selectedItem?.insEmail}</Th>
+                  <Th>email: <a className='hover:underline' href={`mailto:${selectedItem?.insEmail}`}>{selectedItem?.insEmail}</a></Th>
                 </Tr>
                 <Tr>
                   <Th>1. {selectedItem?.insName}</Th>
