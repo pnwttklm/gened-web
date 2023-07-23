@@ -30,10 +30,21 @@ import {
 } from '@chakra-ui/react'
 import { Thasadith } from 'next/font/google'
 import { BsArrowRight } from 'react-icons/bs';
+import { useState } from "react";
 
 export default function Card() {
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const openModal = (index) => {
+    setSelectedItem(questionElement[index]);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   
 
   return (
@@ -50,7 +61,7 @@ export default function Card() {
                 <Badge borderRadius='full' px='2' colorScheme='teal'>
                   New
                 </Badge>
-                <Box
+                {/* <Box
                   color='gray.500'
                   fontWeight='semibold'
                   letterSpacing='wide'
@@ -59,23 +70,30 @@ export default function Card() {
                   ml='2'
                 >
                   {property.beds} beds &bull; {property.baths} baths
-                </Box>
+                </Box> */}
               </Box>
 
               <Box
                 mt='1'
-                fontWeight='semibold'
+                fontWeight='bold'
                 as='h4'
                 lineHeight='tight'
-                noOfLines={1}
+                noOfLines={2}
               >
-                {property.title}
+                  <h1>
+                    {property.courseCode}
+                  </h1>
               </Box>
+              {property.courseTitle}
 
               <Box>
-                {property.formattedPrice}
-                <Box as='span' color='gray.600' fontSize='sm'>
-                  / wk
+                
+      
+                <Box className='flex flex-col'as='span' mt={5}>
+                <h1 className='font-bold'>
+                  หลักสูตร
+                </h1>
+                {property.program}
                 </Box>
               </Box>
 
@@ -88,12 +106,16 @@ export default function Card() {
                         color={i < property.rating ? 'teal.500' : 'gray.300'}
                       />
                     ))} */}
-                <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-                  {property.reviewCount} reviews
+                    <Box className='flex flex-col'as='span'>
+                <h1 className='font-bold'>
+                  คณะที่สอน
+                </h1>
+                {property.teachMajor}
                 </Box>
+
               </Box>
             </Box>
-            <Button className='m-6 border-2 border-[#1A4789] bg-[#1A4789] text-[#FFFFFF] rounded-none hover:bg-[#FFFFFF] hover:text-[#1A4789]' variant='outline' mt={3} onClick={onOpen}>
+            <Button className='m-6 border-2 border-[#1A4789] bg-[#1A4789] text-[#FFFFFF] rounded-none hover:bg-[#FFFFFF] hover:text-[#1A4789]' variant='outline' mt={3} onClick={() => openModal(index)}>
               More Information <Icon ml="3" as={BsArrowRight}></Icon>
             </Button>
           </Box>
@@ -102,13 +124,12 @@ export default function Card() {
 
 
 
-      <Modal onClose={onClose} size="6xl" isOpen={isOpen}>
+      <Modal isOpen={isOpen} onClose={closeModal} size="6xl" >
         <ModalOverlay />
         <ModalContent className='border-2 border-[#000000] rounded-none'> 
           <ModalHeader className='font-bold'>
-            {/* <Image src={property.imageUrl} alt={property.imageAlt}/> */}
-            มสสม103
-แนวคิดและกรณีศึกษาสิทธิมนุษยชน
+            {/* <Image src={selectedItem?.imageUrl} alt={selectedItem?.imageAlt}/> */}
+            {selectedItem?.courseCode} {selectedItem?.courseTitle}
             </ModalHeader>
           <Stack direction='row'>
             <Badge variant='outline' rounded={'full'} className='py-1 px-2' colorScheme='blue' marginLeft={6}>Inter</Badge>
@@ -123,24 +144,24 @@ export default function Card() {
                     <Th color={'grey'}> หน่วยกิต </Th>
                   </Tr>
                   <Tr>
-                    <Th > วิทยศาสตร์ </Th>
-                    <Th>  1 </Th>
+                    <Th > {selectedItem?.faculty} </Th>
+                    <Th>  {selectedItem?.credit} </Th>
                   </Tr>
                   <Tr>
                     <Th color={'grey'}> กวดวิชา/สาขาวิชา</Th>
                     <Th color={'grey'}>  หมวดวิชา/literacy </Th>
                   </Tr>
                   <Tr>
-                    <Th> Something? </Th>
-                    <Th>  sci and env </Th>
+                    <Th> {selectedItem?.major} </Th>
+                    <Th>  {selectedItem?.literacy} </Th>
                   </Tr>
                   <Tr>
                     <Th color={'grey'}> เงื่อนไขรายวิชา </Th>
                     <Th color={'grey'}>  grade </Th>
                   </Tr>
                   <Tr>
-                    <Th> - </Th>
-                    <Th>  OSU </Th>
+                    <Th> {selectedItem?.courseConditon} </Th>
+                    <Th>  {selectedItem?.gradeSys} </Th>
                   </Tr>
               </Table>
             </TableContainer>
@@ -151,7 +172,7 @@ export default function Card() {
                 Course Description
               </Heading>
               <text>
-                The origin and evolution of life; possibility of evolution on other planet; application of astrobiology; space education in Thailand; fundamental of space exploration; Thai space agency; national space roadmap; technology for space exploration
+              {selectedItem?.courseDes}
               </text>
 
               <Heading size={"md"}>
@@ -159,12 +180,12 @@ export default function Card() {
               </Heading>
               <Table>
                 <Tr>
-                  <Th>1. Aj. Tatpong Tulyananda</Th>
-                  <Th>email: aj.tatpong.tul@mahidol.edu</Th>
+                  <Th>1. {selectedItem?.insName}</Th>
+                  <Th>email: {selectedItem?.insEmail}</Th>
                 </Tr>
                 <Tr>
-                  <Th>1. Aj. Tatpong Tulyananda</Th>
-                  <Th>email: aj.tatpong.tul@mahidol.edu</Th>
+                  <Th>1. {selectedItem?.insName}</Th>
+                  <Th>email: {selectedItem?.insEmail}</Th>
                 </Tr>
               </Table>
             </Stack>
@@ -181,21 +202,21 @@ export default function Card() {
                 </Tr>
               </Thead>
               <Tr>
-                <Th> 50 </Th>
-                <Th> Tue 16:30-17:30 </Th>
-                <Th> Aj.Tatpong Tulyananda </Th>
-                <Th> class code: nani1234 on site at faculty of Science </Th>
+                <Th> {selectedItem?.secSeat} </Th>
+                <Th> {selectedItem?.secDay} </Th>
+                <Th> {selectedItem?.secAj} </Th>
+                <Th> {selectedItem?.secLocate} </Th>
               </Tr>
               <Tr>
-                <Th> 50 </Th>
-                <Th> Tue 16:30-17:30 </Th>
-                <Th> Aj.Tatpong Tulyananda </Th>
-                <Th> class code: nani1234 on site at faculty of Science </Th>
+                <Th> {selectedItem?.secSeat} </Th>
+                <Th> {selectedItem?.secDay} </Th>
+                <Th> {selectedItem?.secAj} </Th>
+                <Th> {selectedItem?.secLocate} </Th>
               </Tr>
             </Table>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button onClick={closeModal}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -207,20 +228,39 @@ export default function Card() {
 const questionElement = [
   {
     imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
+    // imageAlt: 'Rear view of modern home with pool',
+    // beds: 3,
+    // baths: 2,
+    // title: 'SCGI195 Space Explore & Astrobiology',
+    // formattedPrice: 'ไทย',
+    // reviewCount: 34,
+    // rating: 4,
+
+    teachMajor: 'สถาบันสิทธิมนุษยชนเเละสันติศึกษา ม.มหิดล (HP)',
+    courseCode: 'SCGI195',
+    courseTitle: 'Space Explore & Astrobiology',
+    program: 'Thai',
+    courseStatus: 'Avaliable',
+    faculty: 'วิทยาศาสตร์',
+    credit: '1',
+    major: 'สักอย่าง',
+    literacy: 'Health Literacy',
+    courseConditon: 'none',
+    gradeSys: 'OSU',
+    courseDes: 'blah blah blah',
+    insName: 'Aj. Akara Supatak',
+    insEmail: 'Akara.sup@mahidol.edu',
+    secSeat: '50',
+    secDay: 'Tue 16:30-17:30',
+    secAj: 'Aj. Akara Supatak',
+    secLocate: 'class code: nani1234 on site at faculty of Science'
   },
   {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'Rear view of modern home with pool',
+    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-02.jpg',
+    imageAlt: 'โอเคค่ะ',
     beds: 3,
     baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
+    title: 'โอเคค่ะ',
     formattedPrice: '$1,900.00',
     reviewCount: 34,
     rating: 4,

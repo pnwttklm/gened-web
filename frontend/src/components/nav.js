@@ -6,6 +6,11 @@ import {
     Collapse,
     Flex,
     Text,
+    Tabs,
+    TabList,
+    TabPanel,
+    TabPanels,
+    Tab,
     IconButton,
     Stack,
     Icon,
@@ -28,10 +33,9 @@ import{
 }from 'react-icons/bs'
 
 import Image from 'next/image';
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-
   
 
 export default function WithSubnavigation() {
@@ -65,7 +69,7 @@ export default function WithSubnavigation() {
     }
 
     return (
-      <Box id='about' className='sticky z-20 top-0'>
+      <Box id='about' className='z-20 top-0'>
         <Flex className={` w-screen h-20 drop-shadow-md backdrop-blur-[56px] bg-[#FFFFFF32]`}>
 
           <Flex className="flex flex-1 justify-between">
@@ -286,34 +290,13 @@ export default function WithSubnavigation() {
 
 
   const navStyle = {
-    padding: '22px',
+    padding: '15px',
   };
   
 const NAV_ITEMS= [
   {
-    label: 'My Course',
-    href: '/',
-    style: {...navStyle}
-  },
-  {
-    label: 'รายวิชา',
-    style: {...navStyle},
-    children: [
-      {
-        label: 'sub1',
-        p: 4,
-      }
-    ]
-  },
-  {
     label: 'เกี่ยวกับ',
     style: {...navStyle},
-    children: [
-      {
-        label: 'sub1',
-        p: 4,
-      }
-    ]
   },
   {
     label: 'ค้นหา',
