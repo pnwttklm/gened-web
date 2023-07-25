@@ -21,6 +21,7 @@ import {
     PopoverContent,
     useColorModeValue,
     useDisclosure,
+    useTabs,
     HStack,
 } from '@chakra-ui/react';
 
@@ -29,18 +30,19 @@ import{
   BsXLg,
   BsChevronDown,
   BsChevronRight,
+  BsFilter
 
 }from 'react-icons/bs'
 
 import Image from 'next/image';
 import { motion } from "framer-motion";
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
   
 
 export default function WithSubnavigation() {
     const { isOpen, onToggle } = useDisclosure();
-    
+
     function navColor() {
       if (isInclude()) {
         return 'white'
@@ -70,8 +72,8 @@ export default function WithSubnavigation() {
 
     return (
       <Box id='about' className='z-20 top-0'>
-        <Flex className={` w-screen h-20 drop-shadow-md backdrop-blur-[56px] bg-[#FFFFFF]`}>
-
+        <Flex className={` w-screen h-20  backdrop-blur-[56px] bg-[#FFFFFF]`}>
+        {/* drop-shadow-md */}
           <Flex className="flex flex-1 justify-between">
             <Link href="/" className="nav-items"><Image width={300} height={100} src={`/${Logo()}`} className="  drop-shadow-md" alt='logo-navbar'/></Link>
             <Flex className="hidden md:flex mr-4">
@@ -104,9 +106,11 @@ export default function WithSubnavigation() {
         <Collapse in={isOpen} animateOpacity className=' text-white'>
           <MobileNav />
         </Collapse>
+
       </Box>
     );
   }
+  
   
   const DesktopNav = function() {
     const pathname = usePathname();
