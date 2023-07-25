@@ -256,7 +256,7 @@ const questionElement = [
     secLocate: 'class code: nani1234 on site at faculty of Science'
   },
   {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-02.jpg',
+    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
     imageAlt: 'โอเคค่ะ',
     beds: 3,
     baths: 2,

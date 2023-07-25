@@ -43,7 +43,7 @@ export default function individual_nav({ event_name, eventlink, links}) {
   return (
     <>
       <div
-        className={`sticky top-0 w-screen h-12 z-20 bg-${navColor()}/20 backdrop-blur-[56px] drop-shadow-2xl`}
+        className={`sticky top-0 w-screen h-12 z-20 bg-white drop-shadow-2xl`}
         onClick={toggleOpen}
       >
         <div
@@ -81,7 +81,7 @@ export default function individual_nav({ event_name, eventlink, links}) {
                 animate="show"
                 exit="exit"
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className={`absolute top-12 left-0 w-full h-96 pt-3 backdrop-blur-[16px] bg-${navColor}/20 flex md:hidden flex-col text-2xl`}
+                className={`absolute top-12 left-0 w-full h-96 pt-3 backdrop-blur-[16px] bg-${navColor} flex md:hidden flex-col text-2xl`}
               >
                 {links.map((link, index) => (
                   <motion.div

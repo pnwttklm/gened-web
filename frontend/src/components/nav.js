@@ -70,7 +70,7 @@ export default function WithSubnavigation() {
 
     return (
       <Box id='about' className='z-20 top-0'>
-        <Flex className={` w-screen h-20 drop-shadow-md backdrop-blur-[56px] bg-[#FFFFFF32]`}>
+        <Flex className={` w-screen h-20 drop-shadow-md backdrop-blur-[56px] bg-[#FFFFFF]`}>
 
           <Flex className="flex flex-1 justify-between">
             <Link href="/" className="nav-items"><Image width={300} height={100} src={`/${Logo()}`} className="  drop-shadow-md" alt='logo-navbar'/></Link>
