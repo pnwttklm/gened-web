@@ -110,7 +110,7 @@ export default function Card() {
                 <h1 className='font-bold'>
                   คณะที่สอน
                 </h1>
-                {property.teachMajor}
+                {property.faculty}
                 </Box>
 
               </Box>
@@ -148,7 +148,7 @@ export default function Card() {
                     <Th>  {selectedItem?.credit} </Th>
                   </Tr>
                   <Tr>
-                    <Th color={'grey'}> กวดวิชา/สาขาวิชา</Th>
+                    <Th color={'grey'}> ภาควิชา/สาขาวิชา</Th>
                     <Th color={'grey'}>  หมวดวิชา/literacy </Th>
                   </Tr>
                   <Tr>
@@ -179,14 +179,12 @@ export default function Card() {
                 Instructor
               </Heading>
               <Table>
-                <Tr>
-                  <Th>1. {selectedItem?.insName}</Th>
-                  <Th>email: <a className='hover:underline' href={`mailto:${selectedItem?.insEmail}`}>{selectedItem?.insEmail}</a></Th>
+              {selectedItem?.inst.map((instr, index) => (
+                <Tr key={index}>
+                  <Th>{index+1}. {instr.inName}</Th>
+                  <Th>email: <a className='hover:underline' href={`mailto:${instr.inMail}`}>{instr.inMail}</a></Th>
                 </Tr>
-                <Tr>
-                  <Th>1. {selectedItem?.insName}</Th>
-                  <Th>email: {selectedItem?.insEmail}</Th>
-                </Tr>
+              ))}
               </Table>
             </Stack>
             <Heading size={"md"}>
@@ -201,18 +199,14 @@ export default function Card() {
                   <Th color={'grey'}>  Location </Th>
                 </Tr>
               </Thead>
-              <Tr>
-                <Th> {selectedItem?.secSeat} </Th>
-                <Th> {selectedItem?.secDay} </Th>
-                <Th> {selectedItem?.secAj} </Th>
-                <Th> {selectedItem?.secLocate} </Th>
+              {selectedItem?.sec.map((sect, index) => (
+              <Tr key={index}>
+                <Th> {sect.secSeat} </Th>
+                <Th> {sect.secDay} </Th>
+                <Th> {selectedItem?.inst[sect.secAj].inName} </Th>
+                <Th> {sect.secLocate} </Th>
               </Tr>
-              <Tr>
-                <Th> {selectedItem?.secSeat} </Th>
-                <Th> {selectedItem?.secDay} </Th>
-                <Th> {selectedItem?.secAj} </Th>
-                <Th> {selectedItem?.secLocate} </Th>
-              </Tr>
+              ))}
             </Table>
           </ModalBody>
           <ModalFooter>
@@ -235,25 +229,38 @@ const questionElement = [
     // formattedPrice: 'ไทย',
     // reviewCount: 34,
     // rating: 4,
-
-    teachMajor: 'สถาบันสิทธิมนุษยชนเเละสันติศึกษา ม.มหิดล (HP)',
     courseCode: 'SCGI195',
     courseTitle: 'Space Explore & Astrobiology',
     program: 'Thai',
     courseStatus: 'Avaliable',
     faculty: 'วิทยาศาสตร์',
-    credit: '1',
-    major: 'สักอย่าง',
+    credit: 1,
+    major: 'ดาราศาสตร์',
     literacy: 'Health Literacy',
-    courseConditon: 'none',
+    courseConditon: '(3-0-6)',
     gradeSys: 'OSU',
     courseDes: 'blah blah blah',
-    insName: 'Aj. Akara Supatak',
-    insEmail: 'Akara.sup@mahidol.edu',
-    secSeat: '50',
-    secDay: 'Tue 16:30-17:30',
-    secAj: 'Aj. Akara Supatak',
-    secLocate: 'class code: nani1234 on site at faculty of Science'
+    inst: [
+            {inName: 'Akara Supatak', inMail: 'akara.sup@mahidol.edu', inPic: ''},
+            {inName: 'Siripen Pongphaichet', inMail: 'siripen.pon@mahidol.edu', inPic: ''}
+          ],
+    sec: [
+          {
+            secNum: 1,
+            secSeat: 50,
+            secDay: 'Tue 15:30-16:30',
+            secAj: 0,
+            secLocate: 'IT103 Faculty of ICT Building, Salaya'
+          },
+          {
+            secNum: 1,
+            secSeat: 50,
+            secDay: 'Tue 16:30-17:30',
+            secAj: 1,
+            secLocate: 'IT103 Faculty of ICT Building, Salaya'
+          },
+      
+        ],
   },
   {
     imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
