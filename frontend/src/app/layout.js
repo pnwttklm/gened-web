@@ -3,6 +3,7 @@ import { sarabun } from './fonts'
 import localFont from 'next/font/local'
 import { Providers } from "./providers";
 import Nav from '../components/nav'
+import Footer from '../components/footer'
 
 // const sarabun = Sarabun({ subsets: ['thai', 'latin'], weight: '400', })
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
  	      <Providers>
           <Nav/>
           {children}
+          <Footer/>
       	</Providers>
       </body>
     </html>

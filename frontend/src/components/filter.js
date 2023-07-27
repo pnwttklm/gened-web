@@ -1,6 +1,8 @@
 import {
     Box,
+    Button,
     Checkbox,
+    Icon,
     Tab,
     TabList,
     TabPanel,
@@ -8,13 +10,14 @@ import {
     Tabs,
 } from '@chakra-ui/react';
 import { useState, useEffect, useRef } from 'react';
+import { BsArrowRight } from 'react-icons/bs';
 import { BsFilter } from 'react-icons/bs';
 
 const CustomBoxButton = ({ label, selected, onClick }) => {
     const boxStyle = {
       cursor: 'pointer',
       border: selected ? '3px solid #1D4F91' : '1px solid #b1b3b3',
-      borderRadius: '12px',
+      borderRadius: '8px',
       padding: '12px',
     //   backgroundColor: selected ? '#1D4F91' : 'transparent',
       color: '#1D4F91',
@@ -67,8 +70,9 @@ export default function FilterTabs() {
             mb={4}
             style={{ position: 'sticky', zIndex: 100, marginLeft: 'auto', marginRight: 'auto' }}
             bg={'white'}
-            className="sticky filter-container drop-shadow-lg  rounded-2xl p-4 lg:top-4 sm:top-0"
-            maxW={"fit-content"}
+            className="sticky filter-container drop-shadow-lg rounded-2xl p-4 lg:top-4 sm:top-0"
+            maxW={"max-content"}
+
         >
             <Box>
                 <Tabs index={selectedTab} onChange={setSelectedTab} isManual variant="soft-rounded">
@@ -84,18 +88,26 @@ export default function FilterTabs() {
                         <Tab
                             _selected={{ color: 'white', bg: '#1D4F91' }}
                             _focus={{ boxShadow: 'none' }}
-                            onClick={() => setSelectedTab(3)}
+                            onClick={() => setSelectedTab(1)}
                             className='rounded-xl'
                         >
-                            หลักสูตร
+                            Literacy
                         </Tab>
                         <Tab
                             _selected={{ color: 'white', bg: '#1D4F91' }}
                             _focus={{ boxShadow: 'none' }}
-                            onClick={() => setSelectedTab(4)}
+                            onClick={() => setSelectedTab(2)}
                             className='rounded-xl'
                         >
-                            ภาคการเรียน
+                            สถานที่
+                        </Tab>
+                        <Tab
+                            _selected={{ color: 'white', bg: '#1D4F91' }}
+                            _focus={{ boxShadow: 'none' }}
+                            onClick={() => setSelectedTab(3)}
+                            className='rounded-xl'
+                        >
+                            วันและเวลา
                         </Tab>
                     </TabList>
                     <TabPanels>
@@ -104,7 +116,7 @@ export default function FilterTabs() {
                             flexDirection="column"
                             alignItems="flex-start"
                         >
-                            <TabPanel className='flex flex-row space-x-1'>
+                            <TabPanel className='flex lg:flex-row flex-col space-x-1'>
                                 <div >
                                     <h1>ภาคการเรียน</h1>
                                     <div className='flex flex-row space-x-1 border p-2 rounded-xl'>
@@ -126,7 +138,7 @@ export default function FilterTabs() {
                                     </div>
                                 </div>
                                 <div >
-                                    <h1>ภาษา</h1>
+                                    <h1>หลักสูตร</h1>
                                     <div className='flex flex-row space-x-1 border p-2 rounded-xl'>
                                     <CustomBoxButton
                                     label={"All"}
@@ -139,14 +151,14 @@ export default function FilterTabs() {
                                     onClick={() => handleBoxClick(selectedTab, 1)}
                                     />
                                     <CustomBoxButton
-                                    label={"อังกฤษ"}
+                                    label={"นานาชาติ"}
                                     selected={selectedBoxes[selectedTab] === 2}
                                     onClick={() => handleBoxClick(selectedTab, 2)}
                                     />
                                     </div>
                                 </div>
                                 <div >
-                                    <h1>ภาษา</h1>
+                                    <h1>หน่วยกิต</h1>
                                     <div className='flex flex-row space-x-1 border p-2 rounded-xl'>
                                     <CustomBoxButton
                                     label={"All"}
@@ -154,18 +166,28 @@ export default function FilterTabs() {
                                     onClick={() => handleBoxClick(selectedTab, 0)}
                                     />
                                     <CustomBoxButton
-                                    label={"ไทย"}
+                                    label={"1"}
                                     selected={selectedBoxes[selectedTab] === 1}
                                     onClick={() => handleBoxClick(selectedTab, 1)}
                                     />
                                     <CustomBoxButton
-                                    label={"อังกฤษ"}
+                                    label={"2"}
                                     selected={selectedBoxes[selectedTab] === 2}
                                     onClick={() => handleBoxClick(selectedTab, 2)}
+                                    />
+                                    <CustomBoxButton
+                                    label={"3"}
+                                    selected={selectedBoxes[selectedTab] === 3}
+                                    onClick={() => handleBoxClick(selectedTab, 3)}
                                     />
                                     </div>
                                 </div>
                             </TabPanel>
+                            <div className='relative h-12 w-full'>
+                            <Button className='absolute right-0 mr-6' onClick={() => setSelectedTab(1)}>
+                                Next <Icon ml="3" as={BsArrowRight}></Icon>
+                            </Button>
+                            </div>
                         </Box>
                         <TabPanel>
                             <p>This is Panel 1</p>
