@@ -103,7 +103,7 @@ export default function Card() {
                     ))} */}
                     <Box className='flex flex-col'as='span'>
                 <h1 className='font-bold'>
-                  คณะที่สอน
+                  คณะที่เปิดสอน
                 </h1>
                 {property.faculty}
                 </Box>
@@ -226,13 +226,13 @@ export default function Card() {
 
 const questionElement = [
   {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/storage1-15612.appspot.com/o/ICTBuilding.png?alt=media&token=a2e64f54-b92f-4c18-b45a-e743b1fa28f2',
     courseCode: 'SCGI195',
     courseTitle: 'Space Explore & Astrobiology',
     program: 'Thai',
     catagory: '',
     courseStatus: 'Avaliable',
-    faculty: 'วิทยาศาสตร์',
+    faculty: 'SC',
     credit: 1,
     major: 'ดาราศาสตร์',
     status: 'A', //A-Available, U-Unavailable, D-To Be Determined, R-Archive.
@@ -264,12 +264,12 @@ const questionElement = [
   },
 
   {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/storage1-15612.appspot.com/o/ICTBuilding.png?alt=media&token=a2e64f54-b92f-4c18-b45a-e743b1fa28f2',
     courseCode: 'SCGI195',
     courseTitle: 'Space Explore & Astrobiology',
     program: 'Thai',
     courseStatus: 'Avaliable',
-    faculty: 'วิทยาศาสตร์',
+    faculty: 'SC',
     credit: 1,
     major: 'ดาราศาสตร์',
     status: 'R', //A-Available, U-Unavailable, D-To Be Determined, R-Archive.
