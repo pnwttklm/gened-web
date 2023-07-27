@@ -65,9 +65,9 @@ export default function FilterTabs() {
             alignItems="center"
             mt={4}
             mb={4}
-            style={{ position: 'sticky', top: 16, zIndex: 100, marginLeft: 'auto', marginRight: 'auto' }}
+            style={{ position: 'sticky', zIndex: 100, marginLeft: 'auto', marginRight: 'auto' }}
             bg={'white'}
-            className="filter-container drop-shadow-lg  rounded-2xl p-4"
+            className="sticky filter-container drop-shadow-lg  rounded-2xl p-4 lg:top-4 sm:top-0"
             maxW={"fit-content"}
         >
             <Box>

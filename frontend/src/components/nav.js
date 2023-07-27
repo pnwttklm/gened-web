@@ -48,13 +48,13 @@ export default function WithSubnavigation() {
         return 'white'
       }
       else {
-        return 'black'
+        return '[#1D4F91]'
       }
     }
 
     function navColorContrast() {
       if (isInclude()) {
-        return 'black'
+        return '[#1D4F91]'
       }
       else {
         return 'white'
@@ -71,7 +71,7 @@ export default function WithSubnavigation() {
     }
 
     return (
-      <Box id='about' className='z-20 top-0'>
+      <Box id='about' className='z-20 top-0 border-b-2 border-b-[#1D4F91]'>
         <Flex className={` w-screen h-20  backdrop-blur-[56px] bg-[#FFFFFF]`}>
         {/* drop-shadow-md */}
           <Flex className="flex flex-1 justify-between">
@@ -117,7 +117,7 @@ export default function WithSubnavigation() {
 
     function navColor() {
       if (isInclude()) {
-        return 'black'
+        return '#1D4F91'
       }
       else {
         return 'white'
@@ -125,8 +125,8 @@ export default function WithSubnavigation() {
     }
 
     const linkColor = useColorModeValue(navColor(), navColor());
-    const linkHoverColor = useColorModeValue('#00FF66', 'white');
-    const popoverContentBgColor = useColorModeValue('#EDEDED', 'white');
+    const linkHoverColor = useColorModeValue('#AD841F', 'white');
+    const popoverContentBgColor = useColorModeValue('#1D4F91', 'white');
   
     return (
       <Stack direction={'row'} spacing={{base:'0.5' , lg:'7'}} alignItems='center'>

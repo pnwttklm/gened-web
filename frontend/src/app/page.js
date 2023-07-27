@@ -4,6 +4,7 @@ import React from "react";
 
 const Cards = dynamic(() => import('../components/index_c/card'))
 const Filter = dynamic(() => import('../components/filter'))
+const Search = dynamic(() => import('../components/search'))
 export default function Home() {
   return (
     <>
@@ -24,6 +25,7 @@ export default function Home() {
       
       ]} /> */}
     <Filter/>
+    <Search/>
     <Cards/>
     </>
     
