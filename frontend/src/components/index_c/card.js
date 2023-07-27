@@ -3,6 +3,7 @@ import {
   Badge,
   Box,
   Button,
+  CircleIcon,
   Heading,
   Icon,
   Image,
@@ -29,7 +30,7 @@ import {
 
 } from '@chakra-ui/react'
 import { Thasadith } from 'next/font/google'
-import { BsArrowRight } from 'react-icons/bs';
+import { BsArrowRight, BsCircleFill } from 'react-icons/bs';
 import { useState } from "react";
 
 export default function Card() {
@@ -57,20 +58,14 @@ export default function Card() {
             <Image src={property.imageUrl} alt={property.imageAlt}/>
 
             <Box p='6'>
-              <Box display='flex' alignItems='baseline'>
-                <Badge borderRadius='full' px='2' colorScheme='teal'>
-                  New
+              <Box display='flex' alignItems='baseline' className='relative h-8 w-full'>
+                <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(property.status)[1]} className='absolute left-0'>
+                  <Icon boxSize={6} as={BsCircleFill} className='pr-2'/>
+                  {getStatus(property.status)[0]}
                 </Badge>
-                {/* <Box
-                  color='gray.500'
-                  fontWeight='semibold'
-                  letterSpacing='wide'
-                  fontSize='xs'
-                  textTransform='uppercase'
-                  ml='2'
-                >
-                  {property.beds} beds &bull; {property.baths} baths
-                </Box> */}
+                {/* <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(property.status)[1]} className='absolute right-0'>
+                  {getStatus(property.status)[0]}
+                </Badge> */}
               </Box>
 
               <Box
@@ -118,6 +113,9 @@ export default function Card() {
             <Button className='m-6 border-2 border-[#1A4789] bg-[#1A4789] text-[#FFFFFF] rounded-none hover:bg-[#FFFFFF] hover:text-[#1A4789]' variant='outline' mt={3} onClick={() => openModal(index)}>
               More Information <Icon ml="3" as={BsArrowRight}></Icon>
             </Button>
+            <div className={`bg-${getStatus(property.status)[1]}`}>
+                    <h1>Hello</h1>
+            </div>
           </Box>
         ))}
       </SimpleGrid>
@@ -131,10 +129,15 @@ export default function Card() {
             {/* <Image src={selectedItem?.imageUrl} alt={selectedItem?.imageAlt}/> */}
             {selectedItem?.courseCode} {selectedItem?.courseTitle}
             </ModalHeader>
-          <Stack direction='row'>
-            <Badge variant='outline' rounded={'full'} className='py-1 px-2' colorScheme='blue' marginLeft={6}>Inter</Badge>
-            <Badge variant='outline' rounded={'full'} className='py-1 px-2' colorScheme='green' marginLeft={2}>Avaliable</Badge>
-          </Stack>
+            <Box display='flex' alignItems='baseline' className='pl-6 space-x-2'>
+                <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(selectedItem?.status)[1]}>
+                  <Icon boxSize={6} as={BsCircleFill} className='pr-2'/>
+                  {getStatus(selectedItem?.status)[0]}
+                </Badge>
+                <Badge borderRadius='full' px='3' py='1'  colorScheme={getLit(selectedItem?.literacy)[1]}>
+                  {getLit(selectedItem?.literacy)[0]}
+                </Badge>
+              </Box>
           <ModalCloseButton />
           <ModalBody>
             <TableContainer>
@@ -149,15 +152,15 @@ export default function Card() {
                   </Tr>
                   <Tr>
                     <Th color={'grey'}> ภาควิชา/สาขาวิชา</Th>
-                    <Th color={'grey'}>  หมวดวิชา/literacy </Th>
+                    <Th color={'grey'}> หลักสูตร </Th>
                   </Tr>
                   <Tr>
                     <Th> {selectedItem?.major} </Th>
-                    <Th>  {selectedItem?.literacy} </Th>
+                    <Th>  {selectedItem?.program} </Th>
                   </Tr>
                   <Tr>
                     <Th color={'grey'}> เงื่อนไขรายวิชา </Th>
-                    <Th color={'grey'}>  grade </Th>
+                    <Th color={'grey'}>  ระบบเกรด </Th>
                   </Tr>
                   <Tr>
                     <Th> {selectedItem?.courseConditon} </Th>
@@ -169,14 +172,14 @@ export default function Card() {
            
             <Stack>
               <Heading size={'md'} className='mt-5'>
-                Course Description
+                รายละเอียดรายวิชา
               </Heading>
               <text>
               {selectedItem?.courseDes}
               </text>
 
               <Heading size={"md"}>
-                Instructor
+                ผู้สอน
               </Heading>
               <Table>
               {selectedItem?.inst.map((instr, index) => (
@@ -188,19 +191,21 @@ export default function Card() {
               </Table>
             </Stack>
             <Heading size={"md"}>
-              Section
+              เซคชัน
             </Heading>
             <Table>
               <Thead>
                 <Tr>
-                  <Th color={'grey'}> Seat </Th>
-                  <Th color={'grey'}> Day </Th>
-                  <Th color={'grey'}> Ajarn </Th>
-                  <Th color={'grey'}>  Location </Th>
+                  <Th color={'grey'}>เซค</Th>
+                  <Th color={'grey'}>ที่นั่ง</Th>
+                  <Th color={'grey'}>วันและเวลา</Th>
+                  <Th color={'grey'}> ผู้สอน </Th>
+                  <Th color={'grey'}>  สถานที่ </Th>
                 </Tr>
               </Thead>
               {selectedItem?.sec.map((sect, index) => (
               <Tr key={index}>
+                <Th> {sect.secNum} </Th>
                 <Th> {sect.secSeat} </Th>
                 <Th> {sect.secDay} </Th>
                 <Th> {selectedItem?.inst[sect.secAj].inName} </Th>
@@ -222,21 +227,16 @@ export default function Card() {
 const questionElement = [
   {
     imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    // imageAlt: 'Rear view of modern home with pool',
-    // beds: 3,
-    // baths: 2,
-    // title: 'SCGI195 Space Explore & Astrobiology',
-    // formattedPrice: 'ไทย',
-    // reviewCount: 34,
-    // rating: 4,
     courseCode: 'SCGI195',
     courseTitle: 'Space Explore & Astrobiology',
     program: 'Thai',
+    catagory: '',
     courseStatus: 'Avaliable',
     faculty: 'วิทยาศาสตร์',
     credit: 1,
     major: 'ดาราศาสตร์',
-    literacy: 'Health Literacy',
+    status: 'A', //A-Available, U-Unavailable, D-To Be Determined, R-Archive.
+    literacy: 'H', //H-Health, I-Internationalization, D-Digital, E-Environmental, F-Financial, S-Sport, W-Science, L-Language, C-Civic, M-Mahidol
     courseConditon: '(3-0-6)',
     gradeSys: 'OSU',
     courseDes: 'blah blah blah',
@@ -262,106 +262,85 @@ const questionElement = [
       
         ],
   },
-  {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'โอเคค่ะ',
-    beds: 3,
-    baths: 2,
-    title: 'โอเคค่ะ',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  },
-  {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  },
-  {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  },
-  {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  },
-  {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  },
-  {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  },
-  {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  },
-  {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  },
-  {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  },
-  {
-    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  },
 
+  {
+    imageUrl: 'https://mahidol.ac.th/temp/2020/07/salaya-01.jpg',
+    courseCode: 'SCGI195',
+    courseTitle: 'Space Explore & Astrobiology',
+    program: 'Thai',
+    courseStatus: 'Avaliable',
+    faculty: 'วิทยาศาสตร์',
+    credit: 1,
+    major: 'ดาราศาสตร์',
+    status: 'R', //A-Available, U-Unavailable, D-To Be Determined, R-Archive.
+    literacy: 'H', //H-Health, I-Internationalization, D-Digital, E-Environmental, F-Financial, S-Sport, W-Science, L-Language, C-Civic, M-Mahidol
+    courseConditon: '(3-0-6)',
+    gradeSys: 'OSU',
+    courseDes: 'blah blah blah',
+    inst: [
+            {inName: 'Akara Supatak', inMail: 'akara.sup@mahidol.edu', inPic: ''},
+            {inName: 'Siripen Pongphaichet', inMail: 'siripen.pon@mahidol.edu', inPic: ''}
+          ],
+    sec: [
+          {
+            secNum: 1,
+            secSeat: 50,
+            secDay: 'Tue 15:30-16:30',
+            secAj: 0,
+            secLocate: 'IT103 Faculty of ICT Building, Salaya'
+          },
+          {
+            secNum: 1,
+            secSeat: 50,
+            secDay: 'Tue 16:30-17:30',
+            secAj: 1,
+            secLocate: 'IT103 Faculty of ICT Building, Salaya'
+          },
+      
+        ],
+  },
+  
 
 ]
+
+const getLit = (litAcro) => {
+  switch (litAcro) {
+    case 'H':
+      return ['Health', 'pink'];
+    case 'I':
+      return ['Internationalization', 'blue'];
+    case 'D':
+      return ['Digital', 'purple'];
+    case 'E':
+      return ['Environmental', 'green'];
+    case 'F':
+      return ['Financial', 'yellow'];
+    case 'S':
+      return ['Sport', 'red'];
+    case 'W':
+      return ['Science', 'cyan'];
+    case 'L':
+      return ['Language', 'gray'];
+    case 'C':
+      return ['Civic', 'orange'];
+    case 'M':
+      return ['Mahidol', 'teal'];
+    default:
+      return ['Default', 'backAlpha'];
+  }
+};
+
+const getStatus = (stsAcro) => {
+  switch (stsAcro) {
+    case 'A':
+      return ['Available', 'green'];
+    case 'U':
+      return ['Unavailable', 'red'];
+    case 'D':
+      return ['To Be Determined', 'gray'];
+    case 'R':
+      return ['Archive', 'cyan'];
+    default:
+      return ['Unavailable', 'red'];
+  }
+};

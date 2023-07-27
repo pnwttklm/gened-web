@@ -10,7 +10,7 @@ import {
     Tabs,
 } from '@chakra-ui/react';
 import { useState, useEffect, useRef } from 'react';
-import { BsArrowRight } from 'react-icons/bs';
+import { BsArrowRight, BsSearch } from 'react-icons/bs';
 import { BsFilter } from 'react-icons/bs';
 
 const CustomBoxButton = ({ label, selected, onClick }) => {
@@ -184,16 +184,34 @@ export default function FilterTabs() {
                                 </div>
                             </TabPanel>
                             <div className='relative h-12 w-full'>
-                            <Button className='absolute right-0 mr-6' onClick={() => setSelectedTab(1)}>
+                            <Button className='absolute right-0 mr-6 border-2 rounded-none bg-black text-white border-black hover:bg-white hover:text-black' onClick={() => setSelectedTab(1)}>
                                 Next <Icon ml="3" as={BsArrowRight}></Icon>
                             </Button>
                             </div>
                         </Box>
                         <TabPanel>
+                            <div>
                             <p>This is Panel 1</p>
+                            <Button className='absolute right-0 mr-6 border-2 rounded-none bg-black text-white border-black hover:bg-white hover:text-black' onClick={() => setSelectedTab(2)}>
+                                Next <Icon ml="3" as={BsArrowRight}></Icon>
+                            </Button>
+                            </div>
                         </TabPanel>
                         <TabPanel>
+                            <div>
                             <p>This is Panel 2</p>
+                            <Button className='absolute right-0 mr-6 border-2 rounded-none bg-black text-white border-black hover:bg-white hover:text-black' onClick={() => setSelectedTab(3)}>
+                                Next <Icon ml="3" as={BsArrowRight}></Icon>
+                            </Button>
+                            </div>
+                        </TabPanel>
+                        <TabPanel>
+                            <div>
+                            <p>This is Panel 3</p>
+                            <Button className='absolute right-0 mr-6 border-2 rounded-none bg-black text-white border-black hover:bg-white hover:text-black' onClick={() => setSelectedTab(3)}>
+                                Search <Icon ml="3" as={BsSearch}></Icon>
+                            </Button>
+                            </div>
                         </TabPanel>
                     </TabPanels>
                 </Tabs>
