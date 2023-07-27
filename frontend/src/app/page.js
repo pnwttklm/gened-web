@@ -1,21 +1,31 @@
 "use client"
+import dynamic from "next/dynamic";
+import React from "react";
 
-
+const Cards = dynamic(() => import('../components/index_c/card'))
+const Filter = dynamic(() => import('../components/filter'))
 export default function Home() {
   return (
-    <div>
-    <h1 className="">
-      Hello world!
-    </h1>
-    </div>
+    <>
+    {/* <Tab event_name='Overview' eventlink='' hasImg='hidden' img='' imgLink='' links={[{
+        delink: '#about',
+        name: 'About',
+        detailContent: "This is a detailed Content right herer"
+      }, {
+        delink: '#gallery',
+        name: 'Gallery'
+      }, {
+        delink: '#msg-from-senpai',
+        name: 'Messages'
+      }, {
+        delink: '#faqs',
+        name: 'FAQs'
+      }
+      
+      ]} /> */}
+    <Filter/>
+    <Cards/>
+    </>
+    
   )
 }
-
-const questionElement = [
-  {
-    img: "",
-    name: "",
-
-  },
-
-]
