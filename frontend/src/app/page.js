@@ -5,7 +5,7 @@ import React from "react";
 const Cards = dynamic(() => import('../components/index_c/card'))
 const Filter = dynamic(() => import('../components/filter'))
 
-export default function Home({course}) {
+export default function Home() {
   return (
     <>
     {/* <Tab event_name='Overview' eventlink='' hasImg='hidden' img='' imgLink='' links={[{
