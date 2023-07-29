@@ -5,14 +5,6 @@ import React from "react";
 const Cards = dynamic(() => import('../components/index_c/card'))
 const Filter = dynamic(() => import('../components/filter'))
 
-export async function getStaticProps() {
-  const res = await fetch("http://www.s4nhxnu1.com:5000/api/data/course?id=&pageNum=0");
-  const data = await res.json();
-  return {
-    props: { course: data.course }
-  };
-}
-
 export default function Home({course}) {
   return (
     <>
