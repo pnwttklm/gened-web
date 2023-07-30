@@ -105,7 +105,7 @@ export default function Card() {
                 <h1 className='font-bold'>
                   คณะที่เปิดสอน
                 </h1>
-                {property.faculty}
+                {getFacName(property.faculty)[0]}
                 </Box>
 
               </Box>
@@ -147,7 +147,7 @@ export default function Card() {
                     <Th color={'grey'}> หน่วยกิต </Th>
                   </Tr>
                   <Tr>
-                    <Th > {selectedItem?.faculty} </Th>
+                    <Th > {getFacName(selectedItem?.faculty)[0]} </Th>
                     <Th>  {selectedItem?.credit} </Th>
                   </Tr>
                   <Tr>
@@ -448,5 +448,110 @@ const getStatus = (stsAcro) => {
       return ['Archive', 'cyan'];
     default:
       return ['Unavailable', 'red'];
+  }
+};
+
+const getFacName = (facAcro) => {
+  switch (facAcro) {
+    case 'AD':
+      return ['สถาบันพัฒนาสุขภาพอาเซียน', 'ASEAN INSTITUTE FOR HEALTH DEVELOPMENT'];
+    case 'AM':
+      return ['โครงการจัดตั้งวิทยาเขตอำนาจเจริญ', 'AMNART CHAROEN CAMPUS'];
+    case 'BM':
+      return ['คณะแพทยศาสตร์วชิรพยาบาล  มหาวิทยาลัยนวมินทราธิราช', 'FACULTY OF MEDICINE VAJIRA HOSPITAL NAVAMINDRADHIRAJ UNIVERSITY'];
+    case 'CE':
+      return ['ศูนย์จิตตปัญญาศึกษา', 'CONTEMPLATIVE EDUCATION CENTER'];
+    case 'CF':
+      return ['สถาบันแห่งชาติเพื่อการพัฒนาเด็กและครอบครัว', 'NATIONAL INSTITUTE FOR CHILD & FAMILY DEVELOPMENT'];
+    case 'CR':
+      return ['วิทยาลัยศาสนศึกษา', 'COLLEGE OF RELIGIOUS STUDIES'];
+    case 'CS':
+      return ['โครงการร่วมคณะแพทย์/ทันตแพทย์', 'INTERDISCIPLINARY'];
+    case 'DT':
+      return ['คณะทันตแพทยศาสตร์', 'FACULTY OF DENTISTRY'];
+    case 'EG':
+      return ['คณะวิศวกรรมศาสตร์', 'FACULTY OF ENGINEERING'];
+    case 'EN':
+      return ['คณะสิ่งแวดล้อมและทรัพยากรศาสตร์', 'FACULTY OF ENVIRONMENT AND RESOURCE STUDIES'];
+    case 'GR':
+      return ['บัณฑิตวิทยาลัย', 'FACULTY OF GRADUATE STUDIES'];
+    case 'HP':
+      return ['โครงการจัดตั้งสถาบันสิทธิมนุษยชนและสันติศึกษา', 'PROJECT FOR THE ESTABLISHMENT OF THE INSTITUTE OF HUMAN RIGHTS AND PEACE STUDIES'];
+    case 'HS':
+      return ['Human Study e.V. และคณะแพทยศาสตร์ศิริราชพยาบาล', 'HUMAN STUDY e.V.& FACULTY OF MEDICINE SIRIRAJ HOSPITAL'];
+    case 'IC':
+      return ['วิทยาลัยนานาชาติ', 'MAHIDOL UNIVERSITY INTERNATIONAL COLLEGE'];
+    case 'ID':
+      return ['สาธิตนานาชาติ', 'DEMONSTRATION SCHOOL'];
+    case 'IL':
+      return ['สถาบันนวัตกรรมการเรียนรู้', 'Institute for Innovative Learning'];
+    case 'IT':
+      return ['คณะเทคโนโลยีสารสนเทศและการสื่อสาร', 'FACULTY OF INFORMATION AND COMMUNICATION TECHNOLOGY'];
+    case 'KA':
+      return ['มหาวิทยาลัยมหิดล วิทยาเขตกาญจนบุรี', 'MAHIDOL UNIVERSITY KANCHANABURI CAMPUS'];
+    case 'KM':
+      return ['วิทยาลัยแพทยศาสตร์พระมงกุฎเกล้า', 'PHRAMONGKUTKLAO COLLEGE OF MEDICINE'];
+    case 'LA':
+      return ['คณะศิลปศาสตร์', 'FACULTY OF LIBERAL ARTS'];
+    case 'LC':
+      return ['สถาบันวิจัยภาษาและวัฒนธรรมเอเซีย', 'RESEARCH INSTITUTE FOR LANGUAGES & CULTURES OF ASIA'];
+    case 'MB':
+      return ['สถาบันชีววิทยาศาสตร์โมเลกุล', 'INSTITUTE OF MOLECULAR BIOSCIENCES'];
+    case 'MG':
+      return ['วิทยาลัยการจัดการ', 'COLLEGE OF MANAGEMENT'];
+    case 'MS':
+      return ['วิทยาลัยดุริยางคศิลป์', 'COLLEGE OF MUSIC'];
+    case 'MT':
+      return ['คณะเทคนิคการแพทย์', 'FACULTY OF MEDICAL TECHNOLOGY'];
+    case 'MU':
+      return ['มหาวิทยาลัยมหิดล', 'MAHIDOL UNIVERSITY'];
+    case 'NA':
+      return ['สถาบันพระบรมราชชนก (โรงพยาบาลมหาราชนครราชสีมา)', 'PRABOROMARAJCHANOK INSTITUTE'];
+    case 'NR':
+      return ['โครงการร่วมค.แพทย์ศาสตร์รพ.รามาธิบดี/ค.พยาบาลศาสตร์', 'FACULTY OF MEDICINE RAMATHIBODI HOSP/FAC OF NURSING'];
+    case 'NS':
+      return ['คณะพยาบาลศาสตร์', 'FACULTY OF NURSING'];
+    case 'NT':
+      return ['สถาบันพระบรมราชชนก (โรงพยาบาลมหาราชนครศรีธรรมราช)', 'PRABOROMARAJCHANOK INSTITUTE'];
+    case 'NU':
+      return ['สถาบันโภชนาการ', 'INSTITUTE OF NUTRITION'];
+    case 'NV':
+      return ['สถาบันพระบรมราชชนก (โรงพยาบาลสวรรค์ประชารักษ์)', 'PRABOROMARAJCHANOK INSTITUTE'];
+    case 'NW':
+      return ['โครงการจัดตั้งวิทยาเขตนครสวรรค์', 'MAHIDOL UNIVERSITY NAKHONSAWAN CAMPUS'];
+    case 'PC':
+      return ['วิทยาลัยวิทยาศาสตร์การแพทย์เจ้าฟ้าจุฬาภรณ์ ราชวิทยาลัยจุฬาภรณ์', 'HRH PRINCESS CHULABHORN COLLEGE OF MEDICAL SCIENCE'];
+    case 'PH':
+      return ['คณะสาธารณสุขศาสตร์', 'FACULTY OF PUBLIC HEALTH'];
+    case 'PI':
+      return ['สถาบันพระบรมราชชนก', 'PRABOROMARAJCHANOK INSTITUTE'];
+    case 'PR':
+      return ['สถาบันวิจัยประชากรและสังคม', 'INSTITUTE FOR POPULATION AND SOCIAL RESEARCH'];
+    case 'PS':
+      return ['วิทยาลัยแพทยศาสตร์ศรีสวางควัฒน', 'PRINCESS SRISAVANGAVADHANA COLLEGE OF MEDICINE'];
+    case 'PT':
+      return ['คณะกายภาพบำบัด', 'FACULTY OF PHYSICAL THERAPY'];
+    case 'PY':
+      return ['คณะเภสัชศาสตร์', 'FACULTY OF PHARMACY'];
+    case 'RA':
+      return ['คณะแพทยศาสตร์โรงพยาบาลรามาธิบดี', 'FACULTY OF MEDICINE RAMATHIBODI HOSPITAL'];
+    case 'RB':
+      return ['สถาบันพระบรมราชชนก (โรงพยาบาลราชบุรี)', 'PRABOROMARAJCHANOK INSTITUTE'];
+    case 'RS':
+      return ['วิทยาลัยราชสุดา', 'RATCHASUDA COLLEGE'];
+    case 'SC':
+      return ['คณะวิทยาศาสตร์', 'FACULTY OF SCIENCE'];
+    case 'SH':
+      return ['คณะสังคมศาสตร์และมนุษยศาสตร์', 'FACULTY OF SOCIAL SCIENCES AND HUMANITIES'];
+    case 'SI':
+      return ['คณะแพทยศาสตร์ศิริราชพยาบาล', 'FACULTY OF MEDICINE SIRIRAJ HOSPITAL'];
+    case 'SP':
+      return ['วิทยาลัยวิทยาศาสตร์และเทคโนโลยีการกีฬา', 'COLLEGE OF SPORTS SCIENCE AND TECHNOLOGY'];
+    case 'TM':
+      return ['คณะเวชศาสตร์เขตร้อน', 'FACULTY OF TROPICAL MEDICINE'];
+    case 'VS':
+      return ['คณะสัตวแพทยศาสตร์', 'FACULTY OF VETERINARY SCIENCE'];
+    default:
+      return ['ไม่มีข้อมูล', 'N/A'];
   }
 };
