@@ -55,7 +55,7 @@ export default function Card() {
       <SimpleGrid columns={4} spacingX='40px' spacingY='20px' minChildWidth='300px' className='px-16'>
         {questionElement.map((property, index) => (
           <Box maxW='sm' borderWidth='1px' borderRadius='0' borderColor='black' overflow='hidden' key={index}>
-            <Image src={property.imageUrl} alt={property.imageAlt}/>
+            {/* <Image src={property.imageUrl} alt={property.imageAlt}/> */}
 
             <Box p='6'>
               <Box display='flex' alignItems='baseline' className='relative h-8 w-full'>
