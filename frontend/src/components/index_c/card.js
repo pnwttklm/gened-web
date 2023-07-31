@@ -80,13 +80,13 @@ export default function Card() {
 
       <SimpleGrid columns={4} spacingX='40px' spacingY='20px' minChildWidth='300px' >
         {apiData.map((property, index) => (
-          <Box maxW='sm' borderWidth='6px' borderRadius='12px' borderColor={`${getLit(property.literacy)[1]}.500`} overflow='hidden' key={index}>
+          <Box maxW='sm' borderWidth='6px' borderRadius='12px' borderColor={`${getLit(property.Literacy)[1]}.500`} overflow='hidden' key={index}>
             {/* <Image src={property.imageUrl} alt={property.imageAlt}/> */}
 
             <Box>
               <Box  className='bg-[#8CA3C4]' p='6'>
               <Box display='flex' alignItems='baseline' className='relative h-8 w-full'>
-                <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(property.status)[1]} className='absolute right-0 drop-shadow-lg'>
+                <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(property.Status)[1]} className='absolute right-0 drop-shadow-lg'>
                   <Icon boxSize={6} as={BsCircleFill} className='pr-2'/>
                   {getStatus(property.Status)[0]}
                 </Badge>
@@ -134,23 +134,23 @@ export default function Card() {
             <Button className='m-6 border-2 border-[#1A4789] bg-[#1A4789] text-[#FFFFFF] rounded-none hover:bg-[#FFFFFF] hover:text-[#1A4789]' variant='outline' mt={3} onClick={() => openModal(index)}>
               More Information <Icon ml="3" as={BsArrowRight}></Icon>
             </Button >
-            <Flex justify="space-between" align="center"  bg={`${getLit(property.literacy)[1]}.500`} className='text-white'>
+            <Flex justify="space-between" align="center"  bg={`${getLit(property.Literacy)[1]}.500`} className='text-white'>
       <Box  p="4" >
       <div>
         <h1>หน่วยกิต</h1>
-          <h1>{property.credit}</h1>
+          <h1>{property.Credit}</h1>
       </div>
       </Box>
       <Box  p="4" >
       <div>
                       <h1>Literacy</h1>
-                      <Text noOfLines={1}>{getLit(property.literacy)[0]}</Text>
+                      <Text noOfLines={1}>{getLit(property.Literacy)[0]}</Text>
                     </div>
       </Box>
       <Box  p="4" >
       <div className='text-[#FFC726]'>
                       <h1>เงื่อนไข</h1>
-                      <h1>{property.courseConditon}</h1>
+                      <h1>{property.Cond}</h1>
                     </div>
       </Box>
     </Flex>
