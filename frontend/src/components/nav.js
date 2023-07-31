@@ -280,7 +280,7 @@ export default function WithSubnavigation() {
             {children &&
               children.map((child, index) => (
                 
-                <Link key={child.label} py={2} href={child.href}>
+                <Link key={child.label} py={2} href={child.href} >
                   {child.label}
                 </Link>
                 
@@ -299,12 +299,14 @@ export default function WithSubnavigation() {
   
 const NAV_ITEMS= [
   {
-    label: 'เกี่ยวกับ',
+    label: 'สำรวจ',
     style: {...navStyle},
+    href: ''
   },
   {
-    label: 'ค้นหา',
-    style: {...navStyle}
+    label: 'เรียนรู้',
+    style: {...navStyle},
+    href: '/learn'
   }
 ];
 
