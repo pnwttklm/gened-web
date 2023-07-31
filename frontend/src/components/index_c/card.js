@@ -48,7 +48,7 @@ export default function Card() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const apiUrl = 'http://www.s4nhxnu1.com:5000/api/data/course?id=&pageNum=0';
+        const apiUrl = 'http://www.s4nhxnu1.com:5000/api/data/course?key=&pageNum=0';
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
