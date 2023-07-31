@@ -4,7 +4,10 @@ import {
   Box,
   Button,
   CircleIcon,
+  Center,
+  Divider,
   Heading,
+  Flex,
   Icon,
   Image,
   Modal,
@@ -17,6 +20,7 @@ import {
   SimpleGrid,
   StarIcon,
   Table,
+  Text,
   Thead,
   Tbody,
   Tfoot,
@@ -53,18 +57,20 @@ export default function Card() {
   return (
     <>
       {/* tata of god of years*/}
-      <div>
-        <h1>รายวิชาที่เลือก (รวม {numSub} รายวิชา)</h1>
-      </div>
-      <div>
-      <SimpleGrid columns={4} spacingX='40px' spacingY='20px' minChildWidth='300px' className='px-16'>
+      <div className='px-16'>
+      <h1 className='font-bold text-2xl'>รายวิชาที่เลือก (รวม {numSub} รายวิชา)</h1>
+
+
+
+      <SimpleGrid columns={4} spacingX='40px' spacingY='20px' minChildWidth='300px' >
         {questionElement.map((property, index) => (
-          <Box maxW='sm' borderWidth='1px' borderRadius='0' borderColor='black' overflow='hidden' key={index}>
+          <Box maxW='sm' borderWidth='6px' borderRadius='12px' borderColor={`${getLit(property.literacy)[1]}.500`} overflow='hidden' key={index}>
             {/* <Image src={property.imageUrl} alt={property.imageAlt}/> */}
 
-            <Box p='6'>
+            <Box>
+              <Box  className='bg-[#8CA3C4]' p='6'>
               <Box display='flex' alignItems='baseline' className='relative h-8 w-full'>
-                <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(property.status)[1]} className='absolute left-0'>
+                <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(property.status)[1]} className='absolute right-0 drop-shadow-lg'>
                   <Icon boxSize={6} as={BsCircleFill} className='pr-2'/>
                   {getStatus(property.status)[0]}
                 </Badge>
@@ -75,20 +81,14 @@ export default function Card() {
 
               <Box
                 mt='1'
-                fontWeight='bold'
-                as='h4'
-                lineHeight='tight'
-                noOfLines={2}
+                noOfLines={3}
               >
-                  <h1>
-                    {property.courseCode}
-                  </h1>
+                  <h1 className='font-bold text-2xl'>{property.courseTitle}</h1>
+                  <h1 className=' text-lg'>{property.courseCode}</h1>
               </Box>
-              {property.courseTitle}
-
-              <Box>
-                
-      
+              </Box>
+              <Box p='6'>
+              <Box >
                 <Box className='flex flex-col'as='span' mt={5}>
                 <h1 className='font-bold'>
                   หลักสูตร
@@ -117,11 +117,31 @@ export default function Card() {
             </Box>
             <Button className='m-6 border-2 border-[#1A4789] bg-[#1A4789] text-[#FFFFFF] rounded-none hover:bg-[#FFFFFF] hover:text-[#1A4789]' variant='outline' mt={3} onClick={() => openModal(index)}>
               More Information <Icon ml="3" as={BsArrowRight}></Icon>
-            </Button>
-            <div className={`bg-${getLit(property.literacy)[1]}-300 `}>
-                    {/* <h1>Hello</h1> */}
-            </div>
+            </Button >
+            <Flex justify="space-between" align="center"  bg={`${getLit(property.literacy)[1]}.500`} className='text-white'>
+      <Box  p="4" >
+      <div>
+        <h1>หน่วยกิต</h1>
+          <h1>{property.credit}</h1>
+      </div>
+      </Box>
+      <Box  p="4" >
+      <div>
+                      <h1>Literacy</h1>
+                      <Text noOfLines={1}>{getLit(property.literacy)[0]}</Text>
+                    </div>
+      </Box>
+      <Box  p="4" >
+      <div className='text-[#FFC726]'>
+                      <h1>เงื่อนไข</h1>
+                      <h1>{property.courseConditon}</h1>
+                    </div>
+      </Box>
+    </Flex>
           </Box>
+          
+          </Box>
+          
         ))}
       </SimpleGrid>
 
@@ -132,7 +152,7 @@ export default function Card() {
         <ModalContent className='border-2 border-[#000000] rounded-none'> 
           <ModalHeader className='font-bold'>
             {/* <Image src={selectedItem?.imageUrl} alt={selectedItem?.imageAlt}/> */}
-            {selectedItem?.courseCode} {selectedItem?.courseTitle}
+            {selectedItem?.courseCode}<br/>{selectedItem?.courseTitle}
             </ModalHeader>
             <Box display='flex' alignItems='baseline' className='pl-6 space-x-2'>
                 <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(selectedItem?.status)[1]}>
@@ -231,15 +251,15 @@ export default function Card() {
 
 const questionElement = [
   {
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/storage1-15612.appspot.com/o/ICTBuilding.png?alt=media&token=a2e64f54-b92f-4c18-b45a-e743b1fa28f2',
+    // imageUrl: 'https://firebasestorage.googleapis.com/v0/b/storage1-15612.appspot.com/o/ICTBuilding.png?alt=media&token=a2e64f54-b92f-4c18-b45a-e743b1fa28f2',
     courseCode: 'SCGI195',
     courseTitle: 'Space Explore & Astrobiology',
     program: 'Thai',
     catagory: '',
-    faculty: 'PC',
+    faculty: 'IT',
     credit: 1,
     major: 'ดาราศาสตร์',
-    status: 'Q', //A-Available, U-Unavailable, D-To Be Determined, R-Archive.
+    status: 'Q', //A-Available, U-Unavailable, D-To Be Determined, R-Archive, Q-Required.
     literacy: 'H', //H-Health, I-Internationalization, D-Digital, E-Environmental, F-Financial, S-Sport, W-Science, L-Language, C-Civic, M-Mahidol
     courseConditon: '(3-0-6)',
     gradeSys: 'OSU',
@@ -417,7 +437,7 @@ const questionElement = [
 const getLit = (litAcro) => {
   switch (litAcro) {
     case 'H':
-      return ['Health', 'pink'];
+      return ['Health', 'red'];
     case 'I':
       return ['Internationalization', 'blue'];
     case 'D':
@@ -427,7 +447,7 @@ const getLit = (litAcro) => {
     case 'F':
       return ['Financial', 'yellow'];
     case 'S':
-      return ['Sport', 'red'];
+      return ['Sport', 'pink'];
     case 'W':
       return ['Science', 'cyan'];
     case 'L':
