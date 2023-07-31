@@ -31,17 +31,33 @@ import {
 } from '@chakra-ui/react'
 import { Thasadith } from 'next/font/google'
 import { BsArrowRight, BsCircleFill } from 'react-icons/bs';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const numSub = 0;
 
 export default function Card() {
 
+  const [apiData, setApiData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const apiUrl = 'http://www.s4nhxnu1.com:5000/api/data/course?id=&pageNum=0';
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        setApiData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   const openModal = (index) => {
-    setSelectedItem(questionElement[index]);
+    setSelectedItem(apiData[index]);
     setIsOpen(true);
   };
 
@@ -58,15 +74,15 @@ export default function Card() {
       </div>
       <div>
       <SimpleGrid columns={4} spacingX='40px' spacingY='20px' minChildWidth='300px' className='px-16'>
-        {questionElement.map((property, index) => (
+        {apiData.map((property, index) => (
           <Box maxW='sm' borderWidth='1px' borderRadius='0' borderColor='black' overflow='hidden' key={index}>
             {/* <Image src={property.imageUrl} alt={property.imageAlt}/> */}
 
             <Box p='6'>
               <Box display='flex' alignItems='baseline' className='relative h-8 w-full'>
-                <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(property.status)[1]} className='absolute left-0'>
+                <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(property.Status)[1]} className='absolute left-0'>
                   <Icon boxSize={6} as={BsCircleFill} className='pr-2'/>
-                  {getStatus(property.status)[0]}
+                  {getStatus(property.Status)[0]}
                 </Badge>
                 {/* <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(property.status)[1]} className='absolute right-0'>
                   {getStatus(property.status)[0]}
@@ -81,10 +97,10 @@ export default function Card() {
                 noOfLines={2}
               >
                   <h1>
-                    {property.courseCode}
+                    {property.CodeEN}
                   </h1>
               </Box>
-              {property.courseTitle}
+              {property.TitleEN}
 
               <Box>
                 
@@ -93,7 +109,7 @@ export default function Card() {
                 <h1 className='font-bold'>
                   หลักสูตร
                 </h1>
-                {property.program}
+                {property.Program}
                 </Box>
               </Box>
 
@@ -110,7 +126,7 @@ export default function Card() {
                 <h1 className='font-bold'>
                   คณะที่เปิดสอน
                 </h1>
-                {getFacName(property.faculty)[0]}
+                {getFacName(property.Faculty)[0]}
                 </Box>
 
               </Box>
@@ -118,7 +134,7 @@ export default function Card() {
             <Button className='m-6 border-2 border-[#1A4789] bg-[#1A4789] text-[#FFFFFF] rounded-none hover:bg-[#FFFFFF] hover:text-[#1A4789]' variant='outline' mt={3} onClick={() => openModal(index)}>
               More Information <Icon ml="3" as={BsArrowRight}></Icon>
             </Button>
-            <div className={`bg-${getLit(property.literacy)[1]}-300 `}>
+            <div className={`bg-${getLit(property.Literacy)[1]}-300 `}>
                     {/* <h1>Hello</h1> */}
             </div>
           </Box>
@@ -132,15 +148,15 @@ export default function Card() {
         <ModalContent className='border-2 border-[#000000] rounded-none'> 
           <ModalHeader className='font-bold'>
             {/* <Image src={selectedItem?.imageUrl} alt={selectedItem?.imageAlt}/> */}
-            {selectedItem?.courseCode} {selectedItem?.courseTitle}
+            {selectedItem?.CodeEN} {selectedItem?.TitleEN}
             </ModalHeader>
             <Box display='flex' alignItems='baseline' className='pl-6 space-x-2'>
-                <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(selectedItem?.status)[1]}>
+                <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(selectedItem?.Status)[1]}>
                   <Icon boxSize={6} as={BsCircleFill} className='pr-2'/>
-                  {getStatus(selectedItem?.status)[0]}
+                  {getStatus(selectedItem?.Status)[0]}
                 </Badge>
-                <Badge borderRadius='full' px='3' py='1'  colorScheme={getLit(selectedItem?.literacy)[1]}>
-                  {getLit(selectedItem?.literacy)[0]}
+                <Badge borderRadius='full' px='3' py='1'  colorScheme={getLit(selectedItem?.Literacy)[1]}>
+                  {getLit(selectedItem?.Literacy)[0]}
                 </Badge>
               </Box>
           <ModalCloseButton />
@@ -152,24 +168,24 @@ export default function Card() {
                     <Th color={'grey'}> หน่วยกิต </Th>
                   </Tr>
                   <Tr>
-                    <Th > {getFacName(selectedItem?.faculty)[0]} </Th>
-                    <Th>  {selectedItem?.credit} </Th>
+                    <Th > {getFacName(selectedItem?.Faculty)[0]} </Th>
+                    <Th>  {selectedItem?.Credit} </Th>
                   </Tr>
                   <Tr>
                     <Th color={'grey'}> ภาควิชา/สาขาวิชา</Th>
                     <Th color={'grey'}> หลักสูตร </Th>
                   </Tr>
                   <Tr>
-                    <Th> {selectedItem?.major} </Th>
-                    <Th>  {selectedItem?.program} </Th>
+                    <Th> {selectedItem?.Major} </Th>
+                    <Th>  {selectedItem?.Program} </Th>
                   </Tr>
                   <Tr>
                     <Th color={'grey'}> เงื่อนไขรายวิชา </Th>
                     <Th color={'grey'}>  ระบบเกรด </Th>
                   </Tr>
                   <Tr>
-                    <Th> {selectedItem?.courseConditon} </Th>
-                    <Th>  {selectedItem?.gradeSys} </Th>
+                    <Th> {selectedItem?.Cond} </Th>
+                    <Th>  {selectedItem?.Grading} </Th>
                   </Tr>
               </Table>
             </TableContainer>
@@ -180,19 +196,19 @@ export default function Card() {
                 รายละเอียดรายวิชา
               </Heading>
               <text>
-              {selectedItem?.courseDes}
+              {selectedItem?.DescriptionTH}
               </text>
 
               <Heading size={"md"}>
                 ผู้สอน
               </Heading>
               <Table>
-              {selectedItem?.inst.map((instr, index) => (
+              {/*selectedItem?.inst.map((instr, index) => (
                 <Tr key={index}>
                   <Th>{index+1}. {instr.inName}</Th>
                   <Th>email: <a className='hover:underline' href={`mailto:${instr.inMail}`}>{instr.inMail}</a></Th>
                 </Tr>
-              ))}
+              ))*/}
               </Table>
             </Stack>
             <Heading size={"md"}>
@@ -208,7 +224,7 @@ export default function Card() {
                   <Th color={'grey'}>  สถานที่ </Th>
                 </Tr>
               </Thead>
-              {selectedItem?.sec.map((sect, index) => (
+              {/*selectedItem?.sec.map((sect, index) => (
               <Tr key={index}>
                 <Th> {sect.secNum} </Th>
                 <Th> {sect.secSeat} </Th>
@@ -216,7 +232,7 @@ export default function Card() {
                 <Th> {selectedItem?.inst[sect.secAj].inName} </Th>
                 <Th> {sect.secLocate} </Th>
               </Tr>
-              ))}
+              ))*/}
             </Table>
           </ModalBody>
           <ModalFooter>
@@ -229,7 +245,7 @@ export default function Card() {
   )
 }
 
-const questionElement = [
+const questionElement = [/*
   {
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/storage1-15612.appspot.com/o/ICTBuilding.png?alt=media&token=a2e64f54-b92f-4c18-b45a-e743b1fa28f2',
     courseCode: 'SCGI195',
@@ -412,7 +428,7 @@ const questionElement = [
   },
   
 
-]
+*/]
 
 const getLit = (litAcro) => {
   switch (litAcro) {
