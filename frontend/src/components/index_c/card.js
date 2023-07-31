@@ -33,6 +33,8 @@ import { Thasadith } from 'next/font/google'
 import { BsArrowRight, BsCircleFill } from 'react-icons/bs';
 import { useState } from "react";
 
+const numSub = 0;
+
 export default function Card() {
 
   const [isOpen, setIsOpen] = useState(false);
@@ -51,6 +53,9 @@ export default function Card() {
   return (
     <>
       {/* tata of god of years*/}
+      <div>
+        <h1>รายวิชาที่เลือก (รวม {numSub} รายวิชา)</h1>
+      </div>
       <div>
       <SimpleGrid columns={4} spacingX='40px' spacingY='20px' minChildWidth='300px' className='px-16'>
         {questionElement.map((property, index) => (
@@ -231,10 +236,10 @@ const questionElement = [
     courseTitle: 'Space Explore & Astrobiology',
     program: 'Thai',
     catagory: '',
-    faculty: 'SC',
+    faculty: 'PC',
     credit: 1,
     major: 'ดาราศาสตร์',
-    status: 'A', //A-Available, U-Unavailable, D-To Be Determined, R-Archive.
+    status: 'Q', //A-Available, U-Unavailable, D-To Be Determined, R-Archive.
     literacy: 'H', //H-Health, I-Internationalization, D-Digital, E-Environmental, F-Financial, S-Sport, W-Science, L-Language, C-Civic, M-Mahidol
     courseConditon: '(3-0-6)',
     gradeSys: 'OSU',
@@ -446,6 +451,8 @@ const getStatus = (stsAcro) => {
       return ['To Be Determined', 'gray'];
     case 'R':
       return ['Archive', 'cyan'];
+    case 'Q':
+      return ['Required', 'purple'];
     default:
       return ['Unavailable', 'red'];
   }
