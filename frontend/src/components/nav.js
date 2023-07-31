@@ -301,7 +301,7 @@ const NAV_ITEMS= [
   {
     label: 'สำรวจ',
     style: {...navStyle},
-    href: ''
+    href: '/'
   },
   {
     label: 'เรียนรู้',
