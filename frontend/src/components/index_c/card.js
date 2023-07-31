@@ -473,7 +473,7 @@ const getLit = (litAcro) => {
     case 'M':
       return ['Mahidol', 'teal'];
     default:
-      return ['Default', 'backAlpha'];
+      return ['Default', 'blackAlpha'];
   }
 };
 
