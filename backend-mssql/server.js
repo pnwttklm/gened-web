@@ -6,7 +6,7 @@ const app = express();
 const port = 5000;
 
 const corsOptions = {
-    origin: ['http://gened.pnwttklm.com','https://gened-web.vercel.app'],
+    origin: ['https://gened.pnwttklm.com','https://gened-web.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
