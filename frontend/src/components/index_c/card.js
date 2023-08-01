@@ -131,7 +131,7 @@ export default function Card() {
 
               </Box>
             </Box>
-            <Button className='m-6 border-2 border-[#1A4789] bg-[#1A4789] text-[#FFFFFF] rounded-none hover:bg-[#FFFFFF] hover:text-[#1A4789]' variant='outline' mt={3} onClick={() => openModal(index)}>
+            <Button className='m-6 border-2 border-[#1A4789] bg-[#1A4789] text-[#FFFFFF] rounded-md hover:bg-[#FFFFFF] hover:text-[#1A4789]' variant='outline' mt={3} onClick={() => openModal(index)}>
               More Information <Icon ml="3" as={BsArrowRight}></Icon>
             </Button >
             <Flex justify="space-between" align="center"  bg={`${getLit(property.Literacy)[1]}.500`} className='text-white'>
@@ -165,7 +165,7 @@ export default function Card() {
 
       <Modal isOpen={isOpen} onClose={closeModal} size="6xl" >
         <ModalOverlay />
-        <ModalContent className='border-2 border-[#000000] rounded-none'> 
+        <ModalContent className='border-4 rounded-2xl'> 
           <ModalHeader className='font-bold'>
             {/* <Image src={selectedItem?.imageUrl} alt={selectedItem?.imageAlt}/> */}
             {selectedItem?.CodeEN}<br/>{selectedItem?.TitleEN}

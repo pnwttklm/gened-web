@@ -179,7 +179,7 @@ export default function FilterTabs() {
 
     return (
         // <div className='sticky pt-16'>
-        <Box
+        <Center
             ref={containerRef}
             display="flex"
             justifyContent="center"
@@ -193,7 +193,7 @@ export default function FilterTabs() {
 
         >
             <Center overflowX="auto" >
-                <Tabs index={selectedTab} onChange={setSelectedTab} isManual variant="soft-rounded" >
+                <Tabs index={selectedTab} onChange={setSelectedTab} isManual variant="soft-rounded" align='center'>
                     <TabList>
                         <Tab
                             _selected={{ color: 'white', bg: '#1D4F91' }}
@@ -313,7 +313,7 @@ export default function FilterTabs() {
                     
                         {/* Location Panel */}
                         <TabPanel isLazy display={selectedTab === 1 ? 'flex' : 'none'} overflowX="auto">
-                            <div className='flex flex-row'>
+                            <div className='flex flex-col h-32'>
                                 <div>
                                     <h1>สถานที่ (Location)</h1>
                                     <div className='flex flex-col lg:flex-row space-x-1 border p-2 rounded-xl'>
@@ -364,7 +364,7 @@ export default function FilterTabs() {
                                         />
                                     </div>
                                 </div>
-                                <div className='relative'>
+                                <div className='absolute right-6 bottom-4'>
                                     <Button 
                                     onClick={handleNextClick} 
                                     rightIcon={<BsArrowRight/>} 
@@ -397,7 +397,7 @@ export default function FilterTabs() {
                     </TabPanels>
                 </Tabs>
             </Center>
-        </Box>
+        </Center>
     );
 }
 

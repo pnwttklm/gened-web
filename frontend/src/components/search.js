@@ -23,7 +23,7 @@ import {
           onChange={handleChange}
           placeholder=''
           size='lg'
-          className='rounded-none border-2 border-black'
+          className='rounded-xl border-2 border-black'
         />
         </div>
         </div>
