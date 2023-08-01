@@ -437,7 +437,7 @@ return (
                     <TabPanel display={selectedTab === 2 ? 'flex' : 'none'}>
                         <div className='flex flex-col w-full'>
                             <div>
-                                <h1>วันที่</h1>
+                                <h1>วัน</h1>
                                 {/* ... (Any other date-related components or content) */}
                             </div>
                             <div>
@@ -507,6 +507,7 @@ const TimeRangeSlider = () => {
                 min={0}
                 max={27}
                 step={1}
+                size={'lg'}
                 defaultValue={timeRange}
                 onChange={handleChange}
                 focusThumbOnChange={false}
