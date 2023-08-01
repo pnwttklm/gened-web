@@ -49,7 +49,7 @@ export default function Card() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const apiUrl = 'https://gened.pnwttklm.com:4000/api/data/course?key=&lit=&prog=&stat=&pageNum=0';
+        const apiUrl = 'http://www.s4nhxnu1.com/api/data/course?key=&lit=&prog=&stat=&pageNum=0';
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
