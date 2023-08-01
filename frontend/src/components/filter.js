@@ -71,13 +71,11 @@ export default function FilterTabs() {
     ]);
 
     const daysOfWeek = [
-        { label: 'Mon', value: 'Mon' },
-        { label: 'Tue', value: 'Tue' },
-        { label: 'Wed', value: 'Wed' },
-        { label: 'Thu', value: 'Thu' },
-        { label: 'Fri', value: 'Fri' },
-        { label: 'Sat', value: 'Sat' },
-        { label: 'Sun', value: 'Sun' },
+        { label: 'จันทร์​', value: 'Mon' },
+        { label: 'อังคาร', value: 'Tue' },
+        { label: 'พุธ', value: 'Wed' },
+        { label: 'พฤหัสบดี', value: 'Thu' },
+        { label: 'ศุกร์', value: 'Fri' },
     ];
     const [selectedDays, setSelectedDays] = useState(daysOfWeek.map((day) => day.value)); // Default to selecting all days
 
@@ -439,7 +437,7 @@ return (
                     <TabPanel display={selectedTab === 2 ? 'flex' : 'none'}>
                         <div className='flex flex-col w-full'>
                             <div>
-                                <h1>วันที่ (Date)</h1>
+                                <h1>วันที่</h1>
                                 {/* ... (Any other date-related components or content) */}
                             </div>
                             <div>
