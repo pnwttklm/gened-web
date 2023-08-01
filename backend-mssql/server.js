@@ -3,7 +3,7 @@ const cors = require('cors');
 const sql = require('mssql');
 
 const app = express();
-const port = 4000;
+const port = 5000;
 
 const corsOptions = {
     origin: ['https://gened.pnwttklm.com','https://gened-web.vercel.app'],
@@ -16,16 +16,16 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-const allowedOrigins = ['https://gened.pnwttklm.com'];
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+// const allowedOrigins = ['https://gened.pnwttklm.com'];
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   }
+// }));
 
 const config = {
     user: 'sa',
