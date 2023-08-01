@@ -21,16 +21,29 @@ const config = {
 app.get('/api/data/course', async (req, res) => {
 try {
     // Receive parameter
-    const ID = req.query.id;
+    const KEY = req.query.key;
+    const LIT = req.query.lit;
+    //const SEM = req.query.sem;
+    const PROG = req.query.prog;
+    const LOC = req.query.loc;
+    const STAT = req.query.stat;
+
+    // Pagination
     const SKIP = Number(req.query.pageNum) * 10;
 
     // Connect to the MSSQL database
     const pool = await sql.connect(config);
 
     // Setup Query String
-    var query = `SELECT * FROM TrCourse`;
-    if(ID != "") query += ` WHERE ID LIKE '%${ID}%'`;
-    query += ` ORDER BY ID OFFSET ${SKIP} ROWS FETCH NEXT 10 ROWS ONLY;`;
+    var query = `SELECT * FROM TrCourse `;
+    if(KEY != "" || LIT != "" || PROG != "" || STAT != "") query += `WHERE '1'='1' `;
+    if(KEY != "") query += `AND (ID LIKE '%${KEY}%' OR CodeEN LIKE '%${KEY}%' OR TitleEN LIKE '%${KEY}%' OR CodeTH LIKE N'%${KEY}%' OR TitleTH LIKE N'%${KEY}%') `;
+    if(LIT != "") query += `AND Literacy = '${LIT}' `;
+    if(PROG != "") query += `AND Program = '${PROG}' `;
+    if(STAT != "") query += `AND Status = '${STAT}' `;
+    query += `ORDER BY ID OFFSET ${SKIP} ROWS FETCH NEXT 10 ROWS ONLY;`;
+
+    console.log(query);
 
     // Query the data from the database
     const result = await pool.request().query(query);
