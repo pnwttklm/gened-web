@@ -377,7 +377,7 @@ export default function FilterTabs() {
 
                         {/* Date & Time Panel */}
                         <TabPanel display={selectedTab === 2 ? 'flex' : 'none'}>
-                            <div className='flex flex-col'>
+                            <div className='flex flex-col w-full'>
                                 <div>
                                     <h1>วันที่ (Date)</h1>
                                     
