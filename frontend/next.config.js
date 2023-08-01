@@ -8,7 +8,7 @@ module.exports = {
         protocol: 'https',
         hostname: 'mahidol.ac.th',
         port: '',
-        pathname: '/temp/**',
+        pathname: '/**',
       },
     ],
   },

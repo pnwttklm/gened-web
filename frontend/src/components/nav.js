@@ -48,13 +48,13 @@ export default function WithSubnavigation() {
         return 'white'
       }
       else {
-        return 'black'
+        return '[#1D4F91]'
       }
     }
 
     function navColorContrast() {
       if (isInclude()) {
-        return 'black'
+        return '[#1D4F91]'
       }
       else {
         return 'white'
@@ -71,7 +71,7 @@ export default function WithSubnavigation() {
     }
 
     return (
-      <Box id='about' className='z-20 top-0'>
+      <Box id='about' className='z-20 top-0 border-b-2 border-b-[#1D4F91]'>
         <Flex className={` w-screen h-20  backdrop-blur-[56px] bg-[#FFFFFF]`}>
         {/* drop-shadow-md */}
           <Flex className="flex flex-1 justify-between">
@@ -117,7 +117,7 @@ export default function WithSubnavigation() {
 
     function navColor() {
       if (isInclude()) {
-        return 'black'
+        return '#1D4F91'
       }
       else {
         return 'white'
@@ -125,8 +125,8 @@ export default function WithSubnavigation() {
     }
 
     const linkColor = useColorModeValue(navColor(), navColor());
-    const linkHoverColor = useColorModeValue('#00FF66', 'white');
-    const popoverContentBgColor = useColorModeValue('#EDEDED', 'white');
+    const linkHoverColor = useColorModeValue('#AD841F', 'white');
+    const popoverContentBgColor = useColorModeValue('#1D4F91', 'white');
   
     return (
       <Stack direction={'row'} spacing={{base:'0.5' , lg:'7'}} alignItems='center'>
@@ -137,8 +137,8 @@ export default function WithSubnavigation() {
                 <Link
                   p={2}
                   href={navItem.href ?? '#'}
-                  fontSize={'sm'}
-                  fontWeight={500}
+                  fontSize={'lg'}
+                  fontWeight={700}
                   color={linkColor}
                   className=' transition-colors duration-250'
                   _hover={{
@@ -280,7 +280,7 @@ export default function WithSubnavigation() {
             {children &&
               children.map((child, index) => (
                 
-                <Link key={child.label} py={2} href={child.href}>
+                <Link key={child.label} py={2} href={child.href} >
                   {child.label}
                 </Link>
                 
@@ -299,12 +299,14 @@ export default function WithSubnavigation() {
   
 const NAV_ITEMS= [
   {
-    label: 'เกี่ยวกับ',
+    label: 'สำรวจ',
     style: {...navStyle},
+    href: '/'
   },
   {
-    label: 'ค้นหา',
-    style: {...navStyle}
+    label: 'เรียนรู้',
+    style: {...navStyle},
+    href: 'https://lifelong.mahidol.ac.th/gened-mu/'
   }
 ];
 
