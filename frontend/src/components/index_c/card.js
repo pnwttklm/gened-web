@@ -1,4 +1,5 @@
 // import Image from "next/image";
+// "use client"
 import {
   Badge,
   Box,
@@ -182,7 +183,7 @@ export default function Card() {
           <ModalCloseButton />
           <ModalBody>
             <TableContainer>
-              <Table variant={"simple"} size={'sm'} >
+              <Table variant="unstyled">
                   <Tr>
                     <Th color={'grey'}> คณะ </Th>
                     <Th color={'grey'}> หน่วยกิต </Th>
@@ -192,19 +193,19 @@ export default function Card() {
                     <Th>  {selectedItem?.Credit} </Th>
                   </Tr>
                   <Tr>
-                    <Th color={'grey'}> ภาควิชา/สาขาวิชา</Th>
+                    <Th color={'grey'}> เงื่อนไขรายวิชา</Th>
                     <Th color={'grey'}> หลักสูตร </Th>
                   </Tr>
                   <Tr>
-                    <Th> {selectedItem?.Major} </Th>
+                    <Th> {selectedItem?.Cond} </Th>
                     <Th>  {selectedItem?.Program} </Th>
                   </Tr>
                   <Tr>
-                    <Th color={'grey'}> เงื่อนไขรายวิชา </Th>
+                    <Th color={'grey'}> จำนวนที่นั่ง </Th>
                     <Th color={'grey'}>  ระบบเกรด </Th>
                   </Tr>
                   <Tr>
-                    <Th> {selectedItem?.Cond} </Th>
+                    <Th> {selectedItem?.minSeat} - {selectedItem?.maxSeat} </Th>
                     <Th>  {selectedItem?.Grading} </Th>
                   </Tr>
               </Table>
@@ -254,6 +255,10 @@ export default function Card() {
               </Tr>
               ))*/}
             </Table>
+            <Heading size={"md"}>
+              หมายเหตุ
+            </Heading>
+            <p>{selectedItem?.note}</p>
           </ModalBody>
           <ModalFooter>
             <Button onClick={closeModal}>Close</Button>
@@ -281,6 +286,8 @@ const questionElement = [
     courseConditon: '(3-0-6)',
     gradeSys: 'OSU',
     courseDes: 'blah blah blah',
+    minSeat: 50,
+    maxSeat: 500,
     Semester: 0, //0-All, 1-1, 2-2
     location: 1, //0-null-All, 1-Online, 2-Salaya, 3-Phayathai, 4-Bangkok Noi, 5-Kanchanaburi, 6-Amnatcharoen, 7-Nakhon Sawan, 8-Chakrinaruebodin, 
     inst: [
@@ -304,6 +311,7 @@ const questionElement = [
           },
       
         ],
+    note: 'ไม่มีหมายเหตุ',
   },
 
 ]

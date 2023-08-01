@@ -5,15 +5,7 @@ const sql = require('mssql');
 const app = express();
 const port = 4000;
 
-const corsOptions = {
-    origin: ['https://gened.pnwttklm.com','https://gened-web.vercel.app'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-    optionsSuccessStatus: 200,
-  };
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 const allowedOrigins = ['https://gened.pnwttklm.com'];
@@ -44,7 +36,7 @@ try {
     const LIT = req.query.lit;
     //const SEM = req.query.sem;
     const PROG = req.query.prog;
-    //const LOC = req.query.loc;
+    const LOC = req.query.loc;
     const STAT = req.query.stat;
 
     // Pagination
@@ -57,7 +49,7 @@ try {
     var query = `SELECT * FROM TrCourse `;
     if(KEY != "" || LIT != "" || PROG != "" || STAT != "") query += `WHERE '1'='1' `;
     if(KEY != "") query += `AND (ID LIKE '%${KEY}%' OR CodeEN LIKE '%${KEY}%' OR TitleEN LIKE '%${KEY}%' OR CodeTH LIKE N'%${KEY}%' OR TitleTH LIKE N'%${KEY}%') `;
-    if(LIT != "") query += `AND LiteracyCode = '${LIT}' `;
+    if(LIT != "") query += `AND Literacy = '${LIT}' `;
     if(PROG != "") query += `AND Program = '${PROG}' `;
     if(STAT != "") query += `AND Status = '${STAT}' `;
     query += `ORDER BY ID OFFSET ${SKIP} ROWS FETCH NEXT 10 ROWS ONLY;`;

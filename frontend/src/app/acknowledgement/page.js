@@ -1,28 +1,30 @@
 export default function acknowledgement() {
     return (
         <>
-            <div className='flex flex-col justify-items-center justify-self-center my-36 items-center content-center justify-center text-[#000000]'>
-                <h1 className="font-semibold ">Acknowledgement</h1>
-                <h1 className="mt-10 font-semibold ">Developers</h1>
-                <p className="font-regular hover:text-[#AD841F]">Poonyawatt Klumnaim</p>
-                <p className="font-regular hover:text-[#AD841F]">Thanachot Onlamoon</p>
-                <h1 className="mt-3 font-semibold ">Design</h1>
-                <p className="font-regular hover:text-[#AD841F]">Poonyawatt Klumnaim</p>
-                <h1 className="mt-3 font-semibold ">Art</h1>
-                <p className="font-regular hover:text-[#AD841F]">Sakhunich Iamcharas</p>
-                <h1 className="mt-3 font-semibold ">Content</h1>
-                <p className="font-regular hover:text-[#AD841F]">Eakbodin Kanjanamuengthong</p>
-                <h1 className="mt-3 font-semibold ">Copywriter</h1>
-                <p className="font-regular hover:text-[#AD841F]">Arus Thienmee</p>
-                <h1 className="mt-3 font-semibold ">Project Manager</h1>
-                <p className="font-regular hover:text-[#AD841F]">Poonyawatt Klumnaim</p>
-                <h1 className="mt-3 font-semibold ">Special Thanks</h1>
-                <p className="font-regular  hover:text-[#AD841F]">Jarukit Buntheangjai</p>
-                <p className="font-regular  hover:text-[#AD841F]">Pakaporn Chokpiroon</p>
-                <p className="font-regular  hover:text-[#AD841F]">Natchapol Mingmahaphan</p>
-                <p className="font-regular  hover:text-[#AD841F]">Napatkrit Asavarojpanich</p>
-                <p className="font-regular hover:text-[#AD841F]">Ornjira Korsakpaisarn</p>
-                <p className="font-regular hover:text-[#AD841F]">Patiparn Tangmongkolpaisan</p>
+            <div className='flex flex-col justify-items-center justify-self-center my-36 items-center content-center justify-center text-[#1A4789] text-xl'>
+                 <h1 className="mb-3 font-extrabold ">Acknowledgement</h1>
+                <h1 className="mt-3 font-bold ">Instructor</h1>
+                <p className="font-regular hover:text-[#AD841F]">Chanokporn Puapattanakun</p>
+                <h1 className="mt-3 font-bold ">Developers</h1>
+                <p className="font-regular hover:text-[#AD841F]">Poonyawatt Klumnaim - Faculty of ICT</p>
+                <p className="font-regular hover:text-[#AD841F]">Kritin Chitchobtham - Faculty of ICT</p>
+                <p className="font-regular hover:text-[#AD841F]">Sahatsawat Nitjaphant - Faculty of ICT</p>
+                <p className="font-regular hover:text-[#AD841F]">Sanhanut Kungwolngan - Faculty of ICT</p>
+                <h1 className="mt-3 font-bold ">Designs</h1>
+                <p className="font-regular hover:text-[#AD841F]">Eakbodin Salim - Faculty of ICT</p>
+                <p className="font-regular hover:text-[#AD841F]">Sawanphato Kuwata - Faculty of Engineering</p>
+                <h1 className="mt-3 font-bold ">Contents</h1>
+                <p className="font-regular hover:text-[#AD841F]">Hirun Chamchitt - Faculty of Engineering</p>
+                <p className="font-regular hover:text-[#AD841F]">Phanathorn Prasertsripattana - Faculty of Engineering</p>
+                <h1 className="mt-3 font-bold ">Copywriters</h1>
+                <p className="font-regular hover:text-[#AD841F]">Haris Vareerat - Faculty of Science</p>
+                <p className="font-regular hover:text-[#AD841F]">Thariti Sriviwattanakul - Faculty of Science</p>
+                <h1 className="mt-3 font-bold ">Coordinator</h1>
+                <p className="font-regular hover:text-[#AD841F]">Jarukit Buntheangjai - Faculty of ICT</p>
+                <h1 className="mt-3 font-bold ">Advisers</h1>
+                <p className="font-regular  hover:text-[#AD841F]">Banthita Polakarn - Faculty of ICT</p>
+                <p className="font-regular  hover:text-[#AD841F]">Kontawat Wisetpaitoon - Faculty of ICT</p>
+                <p className="font-regular  hover:text-[#AD841F]">Napat Veerakul - Faculty of ICT</p>
             </div>
         </>
     )
