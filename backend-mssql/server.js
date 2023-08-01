@@ -3,7 +3,7 @@ const cors = require('cors');
 const sql = require('mssql');
 
 const app = express();
-const port = 5000;
+const port = 4000;
 
 app.use(cors());
 app.use(express.json());
