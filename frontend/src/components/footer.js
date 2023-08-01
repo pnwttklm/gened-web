@@ -45,6 +45,7 @@ export default function () {
             <div className="flex flex-col md:flex-row w-full gap-0 md:gap-10">
               <Link href='https://mahidol.ac.th' target='_blank'><Image height={100} width={300} src='/horizontal-boxblack-rgb.webp' alt="Mahidol Logo"/></Link>
               <Link href='https://lifelong.mahidol.ac.th' target='_blank'><Image height={100} width={100} src='/lifelong_logo.webp' alt="Lifelong Logo"/></Link>
+              <Link href='https://int.mahidol.ac.th' target='_blank'><Image height={100} width={300} src='/iNT.svg' alt="Lifelong Logo"/></Link>
             </div>
             <div className="flex flex-row gap-6">
               <a href='/privacy-policy' className='font-semibold text-[#F5F5F7] hover:text-[#AD841F]'>Privacy Policy</a>
