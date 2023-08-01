@@ -16,6 +16,7 @@ import {
     RangeSliderFilledTrack,
     RangeSliderThumb
 } from '@chakra-ui/react';
+import Image from "next/image";
 import { useState, useEffect, useRef } from 'react';
 import { BsArrowLeft, BsArrowRight, BsChevronLeft, BsChevronRight, BsSearch } from 'react-icons/bs';
 import { BsFilter } from 'react-icons/bs';
@@ -33,6 +34,24 @@ const CustomBoxButton = ({ label, selected, onClick }) => {
 
     return (
         <Box onClick={onClick} style={boxStyle}>
+            {label}
+        </Box>
+    );
+};
+
+const LocationBoxButton = ({ label, selected, onClick, srcs }) => {
+    const boxStyle = {
+        cursor: 'pointer',
+        border: selected ? '3px solid #1D4F91' : '1px solid #b1b3b3',
+        borderRadius: '8px',
+        padding: '12px',
+        //   backgroundColor: selected ? '#1D4F91' : 'transparent',
+        color: '#1D4F91',
+    };
+
+    return (
+        <Box onClick={onClick} style={boxStyle}>
+            <Image height={100} width={100} src={srcs} alt={label} className='rounded-xl'/>
             {label}
         </Box>
     );
@@ -324,7 +343,7 @@ return (
                                         onClick={() => handleCreditClick(9)}
                                     />
                                 </div>
-                                <div className='right-6 bottom-4'>
+                                <div className='right-6 bottom-0'>
                                     <Button
                                         onClick={handleNextClick}
                                         rightIcon={<BsArrowRight />}
@@ -343,59 +362,70 @@ return (
 
 
                     {/* Location Panel */}
-                    <TabPanel isLazy display={selectedTab === 1 ? 'flex' : 'none'} overflowX="auto">
-                        <div className='flex flex-col h-32'>
+                    <TabPanel isLazy display={selectedTab === 1 ? 'flex' : 'none'} overflowX="auto" className='flex flex-col'>
+                        <div className='flex flex-col h-full'>
                             <div>
                                 <h1>สถานที่ (Location)</h1>
                                 <div className='flex flex-col lg:flex-row space-x-1 border p-2 rounded-xl'>
-                                    <CustomBoxButton
+                                    <LocationBoxButton
                                         label={"ทุกวิทยาเขต"}
                                         selected={selectedBoxes[2] === 0}
                                         onClick={() => handleLocationClick(0)}
+                                        srcs='/location/all.svg'
                                     />
-                                    <CustomBoxButton
+                                    <LocationBoxButton
                                         label={"ออนไลน์"}
                                         selected={selectedBoxes[2] === 1}
                                         onClick={() => handleLocationClick(1)}
+                                        srcs='/location/online.svg'
                                     />
-                                    <CustomBoxButton
+                                    <LocationBoxButton
                                         label={"ศาลายา"}
                                         selected={selectedBoxes[2] === 2}
                                         onClick={() => handleLocationClick(2)}
+                                        srcs='/location/salaya.svg'
                                     />
-                                    <CustomBoxButton
+                                    <LocationBoxButton
                                         label={"พญาไท"}
                                         selected={selectedBoxes[2] === 3}
                                         onClick={() => handleLocationClick(3)}
+                                        srcs='/location/phayathai.svg'
                                     />
-                                    <CustomBoxButton
+                                    <LocationBoxButton
                                         label={"บางกอกน้อย"}
                                         selected={selectedBoxes[2] === 4}
                                         onClick={() => handleLocationClick(4)}
+                                        srcs='/location/siriraj.svg'
                                     />
-                                    <CustomBoxButton
+                                    <LocationBoxButton
                                         label={"กาญจนบุรี"}
                                         selected={selectedBoxes[2] === 5}
                                         onClick={() => handleLocationClick(5)}
+                                        srcs='/location/kan.svg'
                                     />
-                                    <CustomBoxButton
+                                    <LocationBoxButton
                                         label={"อำนาจเจริญ"}
                                         selected={selectedBoxes[2] === 6}
                                         onClick={() => handleLocationClick(6)}
+                                        srcs='/location/amna.svg'
                                     />
-                                    <CustomBoxButton
+                                    <LocationBoxButton
                                         label={"นครสวรรค์"}
                                         selected={selectedBoxes[2] === 7}
                                         onClick={() => handleLocationClick(7)}
+                                        srcs='/location/nakhon.svg'
                                     />
-                                    <CustomBoxButton
+                                    <LocationBoxButton
                                         label={"จักกรีนฤบดินทร์"}
                                         selected={selectedBoxes[2] === 8}
                                         onClick={() => handleLocationClick(8)}
+                                        srcs='/location/chakri.svg'
                                     />
                                 </div>
                             </div>
-                            <div className='absolute right-6 bottom-4'>
+                            
+                        </div>
+                        <div className=''>
                                 <Button
                                     onClick={handleNextClick}
                                     rightIcon={<BsArrowRight />}
@@ -403,7 +433,6 @@ return (
                                     variant={'outline'}
                                 >NEXT</Button>
                             </div>
-                        </div>
                     </TabPanel>
 
                     {/* Date & Time Panel */}
@@ -414,7 +443,6 @@ return (
                                 {/* ... (Any other date-related components or content) */}
                             </div>
                             <div>
-                                <h1>Days of the Week:</h1>
                                 <div className='flex flex-row space-x-1 border p-2 rounded-xl'>
                                     {daysOfWeek.map((day) => (
                                         <CustomBoxButton
