@@ -2,16 +2,22 @@ import {
     Box,
     Button,
     Checkbox,
+    Center,
     Icon,
     Tab,
     TabList,
     TabPanel,
     TabPanels,
     Tabs,
+    Text,
     Select,
+    RangeSlider,
+    RangeSliderTrack,
+    RangeSliderFilledTrack,
+    RangeSliderThumb
 } from '@chakra-ui/react';
 import { useState, useEffect, useRef } from 'react';
-import { BsArrowRight, BsSearch } from 'react-icons/bs';
+import { BsArrowLeft, BsArrowRight, BsChevronLeft, BsChevronRight, BsSearch } from 'react-icons/bs';
 import { BsFilter } from 'react-icons/bs';
 
 const CustomBoxButton = ({ label, selected, onClick }) => {
@@ -186,8 +192,8 @@ export default function FilterTabs() {
             maxW={"max-content"}
 
         >
-            <Box>
-                <Tabs index={selectedTab} onChange={setSelectedTab} isManual variant="soft-rounded">
+            <Center overflowX="auto" >
+                <Tabs index={selectedTab} onChange={setSelectedTab} isManual variant="soft-rounded" >
                     <TabList>
                         <Tab
                             _selected={{ color: 'white', bg: '#1D4F91' }}
@@ -195,7 +201,7 @@ export default function FilterTabs() {
                             onClick={() => setSelectedTab(0)}
                             className='rounded-xl'
                         >
-                            รายละเอียดหลักสูตร
+                            หลักสูตร
                         </Tab>
                         <Tab
                             _selected={{ color: 'white', bg: '#1D4F91' }}
@@ -211,18 +217,18 @@ export default function FilterTabs() {
                             onClick={() => setSelectedTab(2)}
                             className='rounded-xl'
                         >
-                            วันและเวลา
+                            วันเวลา
                         </Tab>
                     </TabList>
-                    <TabPanels>
+                    <TabPanels >
                         {/* Course Details Panel */}
                         <TabPanel display={selectedTab === 0 ? 'flex' : 'none'}>
-                            <div className='flex flex-row'>
+                            <div className='flex flex-col lg:flex-row'>
                                 <div>
-                                    <h1>ภาคการเรียน</h1>
+                                    <h1>ภาคเรียน</h1>
                                     <div className='flex flex-row space-x-1 border p-2 rounded-xl'>
                                         <CustomBoxButton
-                                            label={"ALL"}
+                                            label={"ทั้งหมด"}
                                             selected={selectedBoxes[0] === 0}
                                             onClick={() => handleAcademicYearClick(0)}
                                         />
@@ -236,13 +242,18 @@ export default function FilterTabs() {
                                             selected={selectedBoxes[0] === 2}
                                             onClick={() => handleAcademicYearClick(2)}
                                         />
+                                        {/* <CustomBoxButton
+                                            label={"3"}
+                                            selected={selectedBoxes[0] === 3}
+                                            onClick={() => handleAcademicYearClick(3)}
+                                        /> */}
                                     </div>
                                 </div>
                                 <div>
                                     <h1>หลักสูตร</h1>
                                     <div className='flex flex-row space-x-1 border p-2 rounded-xl'>
                                         <CustomBoxButton
-                                            label={"All"}
+                                            label={"ทั้งหมด"}
                                             selected={selectedBoxes[3] === 0}
                                             onClick={() => handleCourseClick(0)}
                                         />
@@ -262,7 +273,7 @@ export default function FilterTabs() {
                                     <h1>หน่วยกิต</h1>
                                     <div className='flex flex-row space-x-1 border p-2 rounded-xl'>
                                         <CustomBoxButton
-                                            label={"All"}
+                                            label={"ทั้งหมด"}
                                             selected={selectedBoxes[6] === 6}
                                             onClick={() => handleCreditClick(6)}
                                         />
@@ -301,45 +312,55 @@ export default function FilterTabs() {
 
                     
                         {/* Location Panel */}
-                        <TabPanel display={selectedTab === 1 ? 'flex' : 'none'}>
+                        <TabPanel isLazy display={selectedTab === 1 ? 'flex' : 'none'} overflowX="auto">
                             <div className='flex flex-row'>
                                 <div>
                                     <h1>สถานที่ (Location)</h1>
-                                    <div className='flex flex-row space-x-1 border p-2 rounded-xl'>
+                                    <div className='flex flex-col lg:flex-row space-x-1 border p-2 rounded-xl'>
                                         <CustomBoxButton
-                                            label={"ALL"}
+                                            label={"ทุกวิทยาเขต"}
                                             selected={selectedBoxes[2] === 0}
                                             onClick={() => handleLocationClick(0)}
                                         />
                                         <CustomBoxButton
-                                            label={"ศาลายา"}
+                                            label={"ออนไลน์"}
                                             selected={selectedBoxes[2] === 1}
                                             onClick={() => handleLocationClick(1)}
                                         />
                                         <CustomBoxButton
-                                            label={"พญาไท"}
+                                            label={"ศาลายา"}
                                             selected={selectedBoxes[2] === 2}
                                             onClick={() => handleLocationClick(2)}
                                         />
                                         <CustomBoxButton
-                                            label={"บางกอกน้อย"}
+                                            label={"พญาไท"}
                                             selected={selectedBoxes[2] === 3}
                                             onClick={() => handleLocationClick(3)}
                                         />
                                         <CustomBoxButton
-                                            label={"กาญจนบุรี"}
+                                            label={"บางกอกน้อย"}
                                             selected={selectedBoxes[2] === 4}
                                             onClick={() => handleLocationClick(4)}
                                         />
                                         <CustomBoxButton
-                                            label={"อำนาจเจริญ"}
+                                            label={"กาญจนบุรี"}
                                             selected={selectedBoxes[2] === 5}
                                             onClick={() => handleLocationClick(5)}
                                         />
                                         <CustomBoxButton
-                                            label={"จักกรีนฤบดินทร์"}
+                                            label={"อำนาจเจริญ"}
                                             selected={selectedBoxes[2] === 6}
                                             onClick={() => handleLocationClick(6)}
+                                        />
+                                        <CustomBoxButton
+                                            label={"นครสวรรค์"}
+                                            selected={selectedBoxes[2] === 7}
+                                            onClick={() => handleLocationClick(7)}
+                                        />
+                                        <CustomBoxButton
+                                            label={"จักกรีนฤบดินทร์"}
+                                            selected={selectedBoxes[2] === 8}
+                                            onClick={() => handleLocationClick(8)}
                                         />
                                     </div>
                                 </div>
@@ -356,30 +377,15 @@ export default function FilterTabs() {
 
                         {/* Date & Time Panel */}
                         <TabPanel display={selectedTab === 2 ? 'flex' : 'none'}>
-                            <div className='flex flex-row'>
+                            <div className='flex flex-col'>
                                 <div>
                                     <h1>วันที่ (Date)</h1>
-                                    <Select
-                                        value={selectedDate}
-                                        onChange={(e) => setSelectedDate(e.target.value)}
-                                    >
-                                        <option value=''>-- เลือกวันที่ --</option>
-                                        <option value='2023-07-30'>30 กรกฎาคม 2566</option>
-                                        <option value='2023-07-31'>31 กรกฎาคม 2566</option>
-                                        {/* Add more date options here */}
-                                    </Select>
+                                    
                                 </div>
-                                <div className='ml-10'>
-                                    <h1>เวลา (Time)</h1>
-                                    <Select
-                                        value={selectedTime}
-                                        onChange={(e) => setSelectedTime(e.target.value)}
-                                    >
-                                        <option value=''>-- เลือกเวลา --</option>
-                                        <option value='09:00'>09:00 น.</option>
-                                        <option value='13:30'>13:30 น.</option>
-                                        {/* Add more time options here */}
-                                    </Select>
+                                <div className=''>
+
+                                    <TimeRangeSlider/>
+
                                 </div>
                             </div>
                         </TabPanel>
@@ -390,7 +396,73 @@ export default function FilterTabs() {
                         </TabPanel>
                     </TabPanels>
                 </Tabs>
-            </Box>
+            </Center>
         </Box>
     );
 }
+
+const timeLabels = {
+    0: ' 6:00 น.',
+    1: ' 6:30 น.',
+    2: ' 7:00 น.',
+    3: ' 7:30 น.',
+    4: ' 8:00 น.',
+    5: ' 8:30 น.',
+    6: ' 9:00 น.',
+    7: ' 9:30 น.',
+    8: '10:00 น.',
+    9: '10:30 น.',
+    10: '11:00 น.',
+    11: '11:30 น.',
+    12: '12:00 น.',
+    13: '12:30 น.',
+    14: '13:00 น.',
+    15: '13:30 น.',
+    16: '14:00 น.',
+    17: '14:30 น.',
+    18: '15:00 น.',
+    19: '15:30 น.',
+    20: '16:00 น.',
+    21: '16:30 น.',
+    22: '17:00 น.',
+    23: '17:30 น.',
+    24: '18:00 น.',
+    25: '18:30 น.',
+    26: '19:00 น.',
+    27: '19:30 น.',
+  };
+
+  const TimeRangeSlider = () => {
+    const [timeRange, setTimeRange] = useState([6, 20]);
+  
+    const handleChange = (newRange) => {
+      setTimeRange(newRange);
+    };
+  
+    return (
+      <Box>
+        <Text mb={2}>เวลาเรียน {timeLabels[timeRange[0]]} - {timeLabels[timeRange[1]]}</Text>
+        <RangeSlider
+          min={0}
+          max={27}
+          step={1}
+          defaultValue={timeRange}
+          onChange={handleChange}
+          focusThumbOnChange={false}
+          allowOverlap={false}
+          getAriaLabel={(index) => (index === 0 ? 'Start time' : 'End time')}
+          getAriaValueText={(value) => timeLabels[value]}
+        >
+        <RangeSliderTrack bg='blue.100'>
+    <RangeSliderFilledTrack bg='blue.500' />
+  </RangeSliderTrack>
+  <RangeSliderThumb boxSize={8} index={0}>
+    <Box color='blue.500' as={BsChevronRight} />
+  </RangeSliderThumb>
+  <RangeSliderThumb boxSize={8} index={1}>
+    <Box color='blue.500' as={BsChevronLeft} />
+  </RangeSliderThumb>
+  </RangeSlider>
+      </Box>
+    );
+  };

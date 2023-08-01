@@ -74,7 +74,7 @@ const buttonNames = [
 },
 {
   id: 'I',
-  name: 'Internationalization',
+  name: 'Inter',
   color: 'blue',
   icon: BsGlobe2,
 },
@@ -86,13 +86,13 @@ const buttonNames = [
 },
 {
   id: 'E',
-  name: 'Environmental',
+  name: 'Environment',
   color: 'green',
   icon: BsTree,
 },
 {
   id: 'F',
-  name: 'Financial',
+  name: 'Finance',
   color: 'gold',
   icon: BsCoin,
 },

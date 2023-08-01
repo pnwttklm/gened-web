@@ -48,7 +48,7 @@ export default function Card() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const apiUrl = 'http://www.s4nhxnu1.com:5000/api/data/course?key=&pageNum=0';
+        const apiUrl = 'http://www.s4nhxnu1.com:5000/api/data/course?key=&lit=&prog=&stat=&pageNum=0';
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
@@ -265,7 +265,8 @@ export default function Card() {
   )
 }
 
-const questionElement = [/*
+const questionElement = [
+  
   {
     // imageUrl: 'https://firebasestorage.googleapis.com/v0/b/storage1-15612.appspot.com/o/ICTBuilding.png?alt=media&token=a2e64f54-b92f-4c18-b45a-e743b1fa28f2',
     courseCode: 'SCGI195',
@@ -280,6 +281,8 @@ const questionElement = [/*
     courseConditon: '(3-0-6)',
     gradeSys: 'OSU',
     courseDes: 'blah blah blah',
+    Semester: 0, //0-All, 1-1, 2-2
+    location: 1, //0-null-All, 1-Online, 2-Salaya, 3-Phayathai, 4-Bangkok Noi, 5-Kanchanaburi, 6-Amnatcharoen, 7-Nakhon Sawan, 8-Chakrinaruebodin, 
     inst: [
             {inName: 'Akara Supatak', inMail: 'akara.sup@mahidol.edu', inPic: ''},
             {inName: 'Siripen Pongphaichet', inMail: 'siripen.pon@mahidol.edu', inPic: ''}
@@ -303,152 +306,7 @@ const questionElement = [/*
         ],
   },
 
-  {
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/storage1-15612.appspot.com/o/ICTBuilding.png?alt=media&token=a2e64f54-b92f-4c18-b45a-e743b1fa28f2',
-    courseCode: 'SCGI195',
-    courseTitle: 'Space Explore & Astrobiology',
-    program: 'Thai',
-    faculty: 'SC',
-    credit: 1,
-    major: 'ดาราศาสตร์',
-    status: 'A', //A-Available, U-Unavailable, D-To Be Determined, R-Archive.
-    literacy: 'I', //H-Health, I-Internationalization, D-Digital, E-Environmental, F-Financial, S-Sport, W-Science, L-Language, C-Civic, M-Mahidol
-    courseConditon: '(3-0-6)',
-    gradeSys: 'OSU',
-    courseDes: 'blah blah blah',
-    inst: [
-            {inName: 'Akara Supatak', inMail: 'akara.sup@mahidol.edu', inPic: ''},
-            {inName: 'Siripen Pongphaichet', inMail: 'siripen.pon@mahidol.edu', inPic: ''}
-          ],
-    sec: [
-          {
-            secNum: 1,
-            secSeat: 50,
-            secDay: 'Tue 15:30-16:30',
-            secAj: 0,
-            secLocate: 'IT103 Faculty of ICT Building, Salaya'
-          },
-          {
-            secNum: 1,
-            secSeat: 50,
-            secDay: 'Tue 16:30-17:30',
-            secAj: 1,
-            secLocate: 'IT103 Faculty of ICT Building, Salaya'
-          },
-      
-        ],
-  },
-
-  {
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/storage1-15612.appspot.com/o/ICTBuilding.png?alt=media&token=a2e64f54-b92f-4c18-b45a-e743b1fa28f2',
-    courseCode: 'SCGI195',
-    courseTitle: 'Space Explore & Astrobiology',
-    program: 'Thai',
-    faculty: 'SC',
-    credit: 1,
-    major: 'ดาราศาสตร์',
-    status: 'U', //A-Available, U-Unavailable, D-To Be Determined, R-Archive.
-    literacy: 'D', //H-Health, I-Internationalization, D-Digital, E-Environmental, F-Financial, S-Sport, W-Science, L-Language, C-Civic, M-Mahidol
-    courseConditon: '(3-0-6)',
-    gradeSys: 'OSU',
-    courseDes: 'blah blah blah',
-    inst: [
-            {inName: 'Akara Supatak', inMail: 'akara.sup@mahidol.edu', inPic: ''},
-            {inName: 'Siripen Pongphaichet', inMail: 'siripen.pon@mahidol.edu', inPic: ''}
-          ],
-    sec: [
-          {
-            secNum: 1,
-            secSeat: 50,
-            secDay: 'Tue 15:30-16:30',
-            secAj: 0,
-            secLocate: 'IT103 Faculty of ICT Building, Salaya'
-          },
-          {
-            secNum: 1,
-            secSeat: 50,
-            secDay: 'Tue 16:30-17:30',
-            secAj: 1,
-            secLocate: 'IT103 Faculty of ICT Building, Salaya'
-          },
-      
-        ],
-  },
-
-  {
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/storage1-15612.appspot.com/o/ICTBuilding.png?alt=media&token=a2e64f54-b92f-4c18-b45a-e743b1fa28f2',
-    courseCode: 'SCGI195',
-    courseTitle: 'Space Explore & Astrobiology',
-    program: 'Thai',
-    faculty: 'SC',
-    credit: 1,
-    major: 'ดาราศาสตร์',
-    status: 'D', //A-Available, U-Unavailable, D-To Be Determined, R-Archive.
-    literacy: 'E', //H-Health, I-Internationalization, D-Digital, E-Environmental, F-Financial, S-Sport, W-Science, L-Language, C-Civic, M-Mahidol
-    courseConditon: '(3-0-6)',
-    gradeSys: 'OSU',
-    courseDes: 'blah blah blah',
-    inst: [
-            {inName: 'Akara Supatak', inMail: 'akara.sup@mahidol.edu', inPic: ''},
-            {inName: 'Siripen Pongphaichet', inMail: 'siripen.pon@mahidol.edu', inPic: ''}
-          ],
-    sec: [
-          {
-            secNum: 1,
-            secSeat: 50,
-            secDay: 'Tue 15:30-16:30',
-            secAj: 0,
-            secLocate: 'IT103 Faculty of ICT Building, Salaya'
-          },
-          {
-            secNum: 1,
-            secSeat: 50,
-            secDay: 'Tue 16:30-17:30',
-            secAj: 1,
-            secLocate: 'IT103 Faculty of ICT Building, Salaya'
-          },
-      
-        ],
-  },
-
-  {
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/storage1-15612.appspot.com/o/ICTBuilding.png?alt=media&token=a2e64f54-b92f-4c18-b45a-e743b1fa28f2',
-    courseCode: 'SCGI195',
-    courseTitle: 'Space Explore & Astrobiology',
-    program: 'Thai',
-    faculty: 'SC',
-    credit: 1,
-    major: 'ดาราศาสตร์',
-    status: 'A', //A-Available, U-Unavailable, D-To Be Determined, R-Archive.
-    literacy: 'F', //H-Health, I-Internationalization, D-Digital, E-Environmental, F-Financial, S-Sport, W-Science, L-Language, C-Civic, M-Mahidol
-    courseConditon: '(3-0-6)',
-    gradeSys: 'OSU',
-    courseDes: 'blah blah blah',
-    inst: [
-            {inName: 'Akara Supatak', inMail: 'akara.sup@mahidol.edu', inPic: ''},
-            {inName: 'Siripen Pongphaichet', inMail: 'siripen.pon@mahidol.edu', inPic: ''}
-          ],
-    sec: [
-          {
-            secNum: 1,
-            secSeat: 50,
-            secDay: 'Tue 15:30-16:30',
-            secAj: 0,
-            secLocate: 'IT103 Faculty of ICT Building, Salaya'
-          },
-          {
-            secNum: 1,
-            secSeat: 50,
-            secDay: 'Tue 16:30-17:30',
-            secAj: 1,
-            secLocate: 'IT103 Faculty of ICT Building, Salaya'
-          },
-      
-        ],
-  },
-  
-
-*/]
+]
 
 const getLit = (litAcro) => {
   switch (litAcro) {

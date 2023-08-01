@@ -306,7 +306,7 @@ const NAV_ITEMS= [
   {
     label: 'เรียนรู้',
     style: {...navStyle},
-    href: '/learn'
+    href: 'https://lifelong.mahidol.ac.th/gened-mu/'
   }
 ];
 
