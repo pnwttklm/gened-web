@@ -8,6 +8,17 @@ const port = 4000;
 app.use(cors());
 app.use(express.json());
 
+const allowedOrigins = ['https://gened.pnwttklm.com'];
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
 const config = {
     user: 'sa',
     password: 's4nhxnu1',

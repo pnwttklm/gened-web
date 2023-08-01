@@ -24,9 +24,9 @@ import {
   BsTiktok,
   BsLinkedin,
   BsLink,
+  BsChevronUp,
 } from "react-icons/bs";
 import React, { useState } from "react";
-
 
 export default function () {
   const year = new Date().getFullYear();
@@ -38,6 +38,7 @@ export default function () {
         md:h-full 
         ">
           <Image height={950} width={950} className="absolute right-0 bottom-0" alt='pattern' src='/pattern1-whiteyellow-pt.webp'/>
+          <a href='/#about' className="absolute right-6 text-white">กลับขึ้นด้านบน  <Icon as={BsChevronUp}/></a>
           <div className="flex flex-col gap-7">
             <Image height={300} width={300} className=" w-[300px]" src='/mockLogoTH_white.svg' alt="GenED Logo"/>
             <h1 className="text-white text-base">Powered by</h1>
