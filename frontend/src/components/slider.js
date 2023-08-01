@@ -105,7 +105,7 @@ const buttonNames = [
 {
   id: 'W',
   name: 'Science',
-  color: 'cyan',
+  color: 'cyan.500',
   icon: BsRocketTakeoff,
 },
 {
