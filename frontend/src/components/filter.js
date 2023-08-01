@@ -293,7 +293,7 @@ export default function FilterTabs() {
                                             onClick={() => handleCreditClick(9)}
                                         />
                                     </div>
-                                <div className='relative'>
+                                <div className='right-6 bottom-4'>
                                     <Button 
                                     onClick={handleNextClick} 
                                     rightIcon={<BsArrowRight/>} 

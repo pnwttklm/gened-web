@@ -137,8 +137,8 @@ export default function WithSubnavigation() {
                 <Link
                   p={2}
                   href={navItem.href ?? '#'}
-                  fontSize={'sm'}
-                  fontWeight={500}
+                  fontSize={'lg'}
+                  fontWeight={700}
                   color={linkColor}
                   className=' transition-colors duration-250'
                   _hover={{

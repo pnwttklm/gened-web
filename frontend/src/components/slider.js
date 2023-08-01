@@ -16,7 +16,7 @@ const ButtonSlider = () => {
     <Center py={4}>
       <Stack className="button-group overflow-x-auto whitespace-nowrap py-4 flex flex-row" spacing={10} mx={12}>
       <Button
-            color={'A' === selectedButton ? 'blackAlpha' : 'gray'}
+            color={'A' === selectedButton ? 'blue.700' : 'gray'}
             onClick={() => handleButtonClick('A')}
             disabled={'A' === selectedButton}
             variant={'A' === selectedButton ? 'outline' : 'solid'}
@@ -53,7 +53,7 @@ const ButtonSlider = () => {
           >
             <Flex direction="column" align="center"> {/* Use Flex for vertical alignment */}
             <Image width='50px' hight='50px' src='/mahidol.svg'></Image>
-            <h1>Mahidol</h1>
+            <h1>คนมหิดล</h1>
           </Flex>
             
           </Button>
@@ -99,13 +99,13 @@ const buttonNames = [
 {
   id: 'S',
   name: 'Sport',
-  color: 'pink',
+  color: 'red.300',
   icon: BsBicycle,
 },
 {
   id: 'W',
   name: 'Science',
-  color: 'cyan.500',
+  color: 'cyan.700',
   icon: BsRocketTakeoff,
 },
 {
