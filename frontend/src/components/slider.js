@@ -3,12 +3,13 @@ import { useState } from 'react';
 import { Box, Button, Center, Divider, Flex, Icon, Image, Stack} from '@chakra-ui/react';
 import { BsBicycle, BsCircleSquare, BsCoin, BsGlobe2, BsHeartPulse, BsRobot, BsTranslate, BsTree, BsRocketTakeoff, BsBuildings } from 'react-icons/bs';
 
-const ButtonSlider = () => {
+const ButtonSlider = ({ onSelectButton }) => {
   const [selectedButton, setSelectedButton] = useState('A');
   
   const handleButtonClick = (name) => {
     if (name !== selectedButton) {
       setSelectedButton(name);
+      onSelectButton(name);
     }
   };
 
@@ -60,6 +61,7 @@ const ButtonSlider = () => {
 
       </Stack>
     </Center>
+    
   );
 };
 

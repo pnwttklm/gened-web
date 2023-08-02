@@ -38,6 +38,7 @@ import { Thasadith } from 'next/font/google'
 import { BsArrowRight, BsCircleFill } from 'react-icons/bs';
 import { useEffect, useState } from "react";
 import SearchBox from '../search';
+import ButtonSlider from '../slider';
 
 const numSub = 0;
 
@@ -47,14 +48,14 @@ export default function Card() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [searchValue, setSearchValue] = useState('');
+  const [selectedButtonId, setSelectedButtonId] = useState(''); // State to store the selected button's id
 
   useEffect(() => {
     async function fetchData() {
       try {
         const prog = '';
-        const lit = '';
         const stat = '';
-        const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${lit}&prog=${prog}&stat=${stat}&pageNum=0`;
+        const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${selectedButtonId}&prog=${prog}&stat=${stat}&pageNum=0`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
@@ -64,10 +65,14 @@ export default function Card() {
     }
 
     fetchData();
-  }, [searchValue]);
+  }, [searchValue,selectedButtonId]);
 
   const handleSearch = (value) => {
     setSearchValue(value); // Update searchValue when the user types
+  };
+
+  const handleSelectButton = (buttonId) => {
+    setSelectedButtonId(buttonId);
   };
 
   const openModal = (index) => {
@@ -83,6 +88,7 @@ export default function Card() {
   return (
     <>
       {/* tata of god of years*/}
+      <ButtonSlider onSelectButton={handleSelectButton} />
       <SearchBox onSearch={handleSearch} />
       <div className='px-16'>
       <h1 className='font-bold text-2xl'>รายวิชาที่เลือก (รวม {numSub} รายวิชา)</h1>

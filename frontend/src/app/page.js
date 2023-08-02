@@ -26,7 +26,6 @@ export default function Home() {
       
       ]} /> */}
     <Filter/>
-    <Slider/>
     <Cards/>
     </>
     
