@@ -145,23 +145,23 @@ export default function Card() {
             <Button className='m-6 border-2 border-[#1A4789] bg-[#1A4789] text-[#FFFFFF] rounded-md hover:bg-[#FFFFFF] hover:text-[#1A4789]' variant='outline' mt={3} onClick={() => openModal(index)}>
               More Information <Icon ml="3" as={BsArrowRight}></Icon>
             </Button >
-            <Flex justify="space-between" align="center"  bg={`${getLit(property.LiteracyCode)[1]}.500`} className='text-white'>
+            <Flex justify="space-between" align="center"  bg={`${getLit(property.LiteracyCode)[1]}.500`} className='text-white text-sm'>
       <Box  p="4" >
       <div>
         <h1>หน่วยกิต</h1>
-          <h1>{property.Credit}</h1>
+          <h1 className='text-2xl font-extrabold'>{property.Credit}</h1>
       </div>
       </Box>
-      <Box  p="4" >
+      <Box  p="4" className='text-center' >
       <div>
                       <h1>Literacy</h1>
-                      <Text noOfLines={1}>{getLit(property.LiteracyCode)[0]}</Text>
+                      <Text noOfLines={1} className='text-2xl font-extrabold'>{getLit(property.LiteracyCode)[0]}</Text>
                     </div>
       </Box>
       <Box  p="4" >
-      <div className='text-[#FFC726]'>
+      <div className='text-[#FFC726] text-right'>
                       <h1>เงื่อนไข</h1>
-                      <h1>{property.Cond}</h1>
+                      <h1 className='text-2xl font-extrabold'>{property.Cond}</h1>
                     </div>
       </Box>
     </Flex>
