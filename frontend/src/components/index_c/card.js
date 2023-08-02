@@ -55,7 +55,11 @@ export default function Card() {
       try {
         const prog = '';
         const stat = '';
-        const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${selectedButtonId}&prog=${prog}&stat=${stat}&pageNum=0`;
+        let buttonId = selectedButtonId; // Create a new variable to hold the modified value
+        if (buttonId === 'A') {
+          buttonId = '';
+        }
+        const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${prog}&stat=${stat}&pageNum=0`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
