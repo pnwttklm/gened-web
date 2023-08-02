@@ -37,7 +37,6 @@ import {
 import { Thasadith } from 'next/font/google'
 import { BsArrowRight, BsCircleFill } from 'react-icons/bs';
 import { useEffect, useState } from "react";
-import { buttonNames } from '../slider';
 
 const numSub = 0;
 
