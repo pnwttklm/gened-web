@@ -45,7 +45,7 @@ const LocationBoxButton = ({ label, selected, onClick, srcs }) => {
         border: selected ? '3px solid #1D4F91' : '1px solid #b1b3b3',
         borderRadius: '8px',
         padding: '12px',
-        //   backgroundColor: selected ? '#1D4F91' : 'transparent',
+        // backgroundColor: selected ? '#DAE2EC' : 'transparent',
         color: '#1D4F91',
     };
 
@@ -363,7 +363,7 @@ return (
                     <TabPanel isLazy display={selectedTab === 1 ? 'flex' : 'none'} overflowX="auto" className='flex flex-col'>
                         <div className='flex flex-col h-full'>
                             <div>
-                                <h1>สถานที่ (Location)</h1>
+                                {/* <h1>สถานที่ (Location)</h1> */}
                                 <div className='flex flex-col lg:flex-row space-x-1 border p-2 rounded-xl'>
                                     <LocationBoxButton
                                         label={"ทุกวิทยาเขต"}
