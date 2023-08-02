@@ -37,6 +37,7 @@ import {
 import { Thasadith } from 'next/font/google'
 import { BsArrowRight, BsCircleFill } from 'react-icons/bs';
 import { useEffect, useState } from "react";
+import { buttonNames } from '../slider';
 
 const numSub = 0;
 
@@ -49,7 +50,11 @@ export default function Card() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const apiUrl = 'http://www.s4nhxnu1.com/api/data/course?key=&lit=&prog=&stat=&pageNum=0';
+        const key = '';
+        const prog = '';
+        const lit = '';
+        const stat = '';
+        const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${key}&lit=${lit}&prog=${prog}&stat=${stat}&pageNum=0`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
@@ -81,7 +86,7 @@ export default function Card() {
 
       <SimpleGrid columns={4} spacingX='40px' spacingY='20px' minChildWidth='300px' >
         {apiData.map((property, index) => (
-          <Box maxW='sm' borderWidth='6px' borderRadius='12px' borderColor={`${getLit(property.Literacy)[1]}.500`} overflow='hidden' key={index}>
+          <Box maxW='sm' borderWidth='6px' borderRadius='12px' borderColor={`${getLit(property.LiteracyCode)[1]}.500`} overflow='hidden' key={index}>
             {/* <Image src={property.imageUrl} alt={property.imageAlt}/> */}
 
             <Box>
@@ -135,7 +140,7 @@ export default function Card() {
             <Button className='m-6 border-2 border-[#1A4789] bg-[#1A4789] text-[#FFFFFF] rounded-md hover:bg-[#FFFFFF] hover:text-[#1A4789]' variant='outline' mt={3} onClick={() => openModal(index)}>
               More Information <Icon ml="3" as={BsArrowRight}></Icon>
             </Button >
-            <Flex justify="space-between" align="center"  bg={`${getLit(property.Literacy)[1]}.500`} className='text-white'>
+            <Flex justify="space-between" align="center"  bg={`${getLit(property.LiteracyCode)[1]}.500`} className='text-white'>
       <Box  p="4" >
       <div>
         <h1>หน่วยกิต</h1>
@@ -145,7 +150,7 @@ export default function Card() {
       <Box  p="4" >
       <div>
                       <h1>Literacy</h1>
-                      <Text noOfLines={1}>{getLit(property.Literacy)[0]}</Text>
+                      <Text noOfLines={1}>{getLit(property.LiteracyCode)[0]}</Text>
                     </div>
       </Box>
       <Box  p="4" >
@@ -176,8 +181,8 @@ export default function Card() {
                   <Icon boxSize={6} as={BsCircleFill} className='pr-2'/>
                   {getStatus(selectedItem?.Status)[0]}
                 </Badge>
-                <Badge borderRadius='full' px='3' py='1'  colorScheme={getLit(selectedItem?.Literacy)[1]}>
-                  {getLit(selectedItem?.Literacy)[0]}
+                <Badge borderRadius='full' px='3' py='1'  colorScheme={getLit(selectedItem?.LiteracyCode)[1]}>
+                  {getLit(selectedItem?.LiteracyCode)[0]}
                 </Badge>
               </Box>
           <ModalCloseButton />
@@ -205,7 +210,7 @@ export default function Card() {
                     <Th color={'grey'}>  ระบบเกรด </Th>
                   </Tr>
                   <Tr>
-                    <Th> {selectedItem?.minSeat} - {selectedItem?.maxSeat} </Th>
+                    <Th> {selectedItem?.MinSeat} - {selectedItem?.MaxSeat} </Th>
                     <Th>  {selectedItem?.Grading} </Th>
                   </Tr>
               </Table>
@@ -274,22 +279,22 @@ const questionElement = [
   
   {
     // imageUrl: 'https://firebasestorage.googleapis.com/v0/b/storage1-15612.appspot.com/o/ICTBuilding.png?alt=media&token=a2e64f54-b92f-4c18-b45a-e743b1fa28f2',
-    courseCode: 'SCGI195',
-    courseTitle: 'Space Explore & Astrobiology',
-    program: 'Thai',
-    catagory: '',
-    faculty: 'IT',
-    credit: 1,
-    major: 'ดาราศาสตร์',
-    status: 'Q', //A-Available, U-Unavailable, D-To Be Determined, R-Archive, Q-Required.
-    literacy: 'H', //H-Health, I-Internationalization, D-Digital, E-Environmental, F-Financial, S-Sport, W-Science, L-Language, C-Civic, M-Mahidol
-    courseConditon: '(3-0-6)',
-    gradeSys: 'OSU',
-    courseDes: 'blah blah blah',
-    minSeat: 50,
-    maxSeat: 500,
-    Semester: 0, //0-All, 1-1, 2-2
-    location: 1, //0-null-All, 1-Online, 2-Salaya, 3-Phayathai, 4-Bangkok Noi, 5-Kanchanaburi, 6-Amnatcharoen, 7-Nakhon Sawan, 8-Chakrinaruebodin, 
+    CodeEN: 'SCGI195',
+    TitleEN: 'Space Explore & Astrobiology',
+    Program: 'Thai',
+    Catagory: '',
+    Faculty: 'IT',
+    Credit: 1,
+    Major: 'ดาราศาสตร์',
+    Status: 'Q', //A-Available, U-Unavailable, D-To Be Determined, R-Archive, Q-Required.
+    LiteracyCode: 'D', //H-Health, I-Internationalization, D-Digital, E-Environmental, F-Financial, S-Sport, W-Science, L-Language, C-Civic, M-Mahidol
+    Cond: '(3-0-6)',
+    Grading: 'OSU',
+    DescriptionTH: 'blah blah blah',
+    MinSeat: 50,
+    MaxSeat: 500,
+    SemesterCode: 0, //0-All, 1-1, 2-2
+    LocationCode: 1, //0-null-All, 1-Online, 2-Salaya, 3-Phayathai, 4-Bangkok Noi, 5-Kanchanaburi, 6-Amnatcharoen, 7-Nakhon Sawan, 8-Chakrinaruebodin, 
     inst: [
             {inName: 'Akara Supatak', inMail: 'akara.sup@mahidol.edu', inPic: ''},
             {inName: 'Siripen Pongphaichet', inMail: 'siripen.pon@mahidol.edu', inPic: ''}
@@ -312,7 +317,29 @@ const questionElement = [
       
         ],
     note: 'ไม่มีหมายเหตุ',
-  },
+  },{
+    ID:"GE001",
+    CodeEN:"CFGE101",
+    TitleEN:"Life Design",
+    CodeTH:"ดคศท101",
+    TitleTH:"ออกแบบชีวิต",
+    Credit:2,
+    Cond:"(2-0-4)",
+    LiteracyCode:"H",
+    CatagoryCode:"-",
+    Program:"Thai",
+    Faculty:"CF",
+    Major:"-",
+    Grading:"OSU",
+    CourseCo:"-",
+    Email:"-",
+    DescriptionEN:"This is description",
+    DescriptionTH:"นี่คือคำอธิบาย",
+    MinSeat:50,"MaxSeat":500,
+    SemesterCode:1,
+    LocationCode:8,
+    Status:"A"
+  }
 
 ]
 
