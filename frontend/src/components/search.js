@@ -9,9 +9,13 @@ import {
 
 
 
-    export default function SearchBox() {
+    export default function SearchBox({ onSearch }) {
     const [value, setValue] = React.useState('')
-    const handleChange = (event) => setValue(event.target.value)
+    const handleChange = (event) => {
+      const newValue = event.target.value;
+      setValue(newValue);
+      onSearch(newValue); // Call the onSearch prop with the new search value
+    };
   
     return (
       <>

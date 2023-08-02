@@ -37,6 +37,7 @@ import {
 import { Thasadith } from 'next/font/google'
 import { BsArrowRight, BsCircleFill } from 'react-icons/bs';
 import { useEffect, useState } from "react";
+import SearchBox from '../search';
 
 const numSub = 0;
 
@@ -45,15 +46,15 @@ export default function Card() {
   const [apiData, setApiData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const key = '';
         const prog = '';
         const lit = '';
         const stat = '';
-        const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${key}&lit=${lit}&prog=${prog}&stat=${stat}&pageNum=0`;
+        const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${lit}&prog=${prog}&stat=${stat}&pageNum=0`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
@@ -63,7 +64,11 @@ export default function Card() {
     }
 
     fetchData();
-  }, []);
+  }, [searchValue]);
+
+  const handleSearch = (value) => {
+    setSearchValue(value); // Update searchValue when the user types
+  };
 
   const openModal = (index) => {
     setSelectedItem(apiData[index]);
@@ -78,6 +83,7 @@ export default function Card() {
   return (
     <>
       {/* tata of god of years*/}
+      <SearchBox onSearch={handleSearch} />
       <div className='px-16'>
       <h1 className='font-bold text-2xl'>รายวิชาที่เลือก (รวม {numSub} รายวิชา)</h1>
 
