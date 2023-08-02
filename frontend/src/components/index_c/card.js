@@ -179,7 +179,8 @@ export default function Card() {
         <ModalContent className='border-4 rounded-2xl'> 
           <ModalHeader className='font-bold'>
             {/* <Image src={selectedItem?.imageUrl} alt={selectedItem?.imageAlt}/> */}
-            {selectedItem?.CodeEN}<br/>{selectedItem?.TitleEN}
+            <h1 className='text-3xl font-bold'>{selectedItem?.TitleEN}</h1>
+            <h1 className='text-md font-regular'>{selectedItem?.CodeEN}</h1>
             </ModalHeader>
             <Box display='flex' alignItems='baseline' className='pl-6 space-x-2'>
                 <Badge borderRadius='full' px='3' py='1'  colorScheme={getStatus(selectedItem?.Status)[1]}>
@@ -193,7 +194,7 @@ export default function Card() {
           <ModalCloseButton />
           <ModalBody>
             <TableContainer>
-              <Table variant="unstyled">
+              <Table variant="">
                   <Tr>
                     <Th color={'grey'}> คณะ </Th>
                     <Th color={'grey'}> หน่วยกิต </Th>
