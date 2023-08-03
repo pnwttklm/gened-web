@@ -3,7 +3,7 @@ const cors = require('cors');
 const sql = require('mssql');
 
 const app = express();
-const port = 5000;
+const port = 4000;
 
 const corsOptions = {
     origin: ['https://gened.pnwttklm.com','https://gened-web.vercel.app'],

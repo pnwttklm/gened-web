@@ -59,7 +59,7 @@ export default function Card() {
         if (buttonId === 'A') {
           buttonId = '';
         }
-        const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${prog}&stat=${stat}&pageNum=0`;
+        const apiUrl = `https://gened-api.azurewebsites.net/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${prog}&stat=${stat}&pageNum=0`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
@@ -333,7 +333,8 @@ const questionElement = [
       
         ],
     note: 'ไม่มีหมายเหตุ',
-  },{
+  },
+  {
     ID:"GE001",
     CodeEN:"CFGE101",
     TitleEN:"Life Design",
