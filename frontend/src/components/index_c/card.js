@@ -60,6 +60,7 @@ export default function Card() {
           buttonId = '';
         }
         const apiUrl = `https://gened-api.azurewebsites.net/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${prog}&stat=${stat}&pageNum=0`;
+        // const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${prog}&stat=${stat}&pageNum=0`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
@@ -222,11 +223,11 @@ export default function Card() {
                     <Th>  {selectedItem?.Program} </Th>
                   </Tr>
                   <Tr>
-                    <Th color={'grey'}> จำนวนที่นั่ง </Th>
+                    <Th color={'grey'}> ภาคเรียน </Th>
                     <Th color={'grey'}>  ระบบเกรด </Th>
                   </Tr>
                   <Tr>
-                    <Th> {selectedItem?.MinSeat} - {selectedItem?.MaxSeat} </Th>
+                    <Th> {selectedItem?.SemesterCode}</Th>
                     <Th>  {selectedItem?.Grading} </Th>
                   </Tr>
               </Table>
