@@ -51,6 +51,8 @@ export default function Card() {
   const [searchValue, setSearchValue] = useState('');
   const [selectedButtonId, setSelectedButtonId] = useState(''); // State to store the selected button's id
   const [selectedProgram, setSelectedProgram] = useState('');
+  const [selectedSemester, setSelectedSemester] = useState('');
+  const [selectedCredit, setSelectedCredit] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -66,8 +68,15 @@ export default function Card() {
           2: 'Inter',
         };
         const ProgName = programMap[selectedProgram] || '';
-        const apiUrl = `https://gened-api.azurewebsites.net/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${ProgName}&stat=${stat}&pageNum=0`;
-        // const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${ProgName}&stat=${stat}&pageNum=0`;
+        const creditMap = {
+          6: '',
+          7: 1,
+          8: 2,
+          9: 3
+        };
+        const RealCredit = creditMap[selectedCredit] || ''; // Filter with Credit
+        // const apiUrl = `https://gened-api.azurewebsites.net/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${ProgName}&stat=${stat}&pageNum=0`;
+        const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${ProgName}&stat=${stat}&pageNum=0`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
@@ -77,7 +86,7 @@ export default function Card() {
     }
 
     fetchData();
-  }, [searchValue,selectedButtonId,selectedProgram]);
+  }, [searchValue,selectedButtonId,selectedProgram,selectedSemester,selectedCredit]);
 
   const handleSearch = (value) => {
     setSearchValue(value); // Update searchValue when the user types
@@ -89,6 +98,14 @@ export default function Card() {
 
   const handleProgram = (ProgType) => {
     setSelectedProgram(ProgType);
+  };
+
+  const handleSemester = (SemesterCode) => {
+    setSelectedSemester(SemesterCode);
+  };
+
+  const handleCredit = (Credit) => {
+    setSelectedCredit(Credit);
   };
 
   const openModal = (index) => {
@@ -104,7 +121,7 @@ export default function Card() {
   return (
     <>
       {/* tata of god of years*/}
-      <FilterTabs onProgram={handleProgram}/>
+      <FilterTabs onProgram={handleProgram} onSemester={handleSemester} onCredit={handleCredit}/>
       <ButtonSlider onSelectButton={handleSelectButton} />
       <SearchBox onSearch={handleSearch} />
       <div className='px-16'>

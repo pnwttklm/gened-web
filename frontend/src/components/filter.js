@@ -57,7 +57,7 @@ const LocationBoxButton = ({ label, selected, onClick, srcs }) => {
     );
 };
 
-export default function FilterTabs({ onProgram }) {
+export default function FilterTabs({ onProgram , onSemester }) {
     const [selectedTab, setSelectedTab] = useState(-1);
     const [selectedBoxes, setSelectedBoxes] = useState([
         0,
@@ -119,6 +119,7 @@ const handleAcademicYearClick = (boxIndex) => {
 
         return updatedSelectedBoxes;
     });
+    onSemester(boxIndex);
 };
 
 
@@ -162,6 +163,7 @@ const handleCreditClick = (boxIndex) => {
 
         return updatedSelectedBoxes;
     });
+    onCredit(boxIndex);
 };
 
 // const handleLiteracyClick = (boxIndex) => {
