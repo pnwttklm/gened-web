@@ -366,13 +366,13 @@ const getLit = (litAcro) => {
     case 'H':
       return ['Health', 'red'];
     case 'I':
-      return ['Internationalization', 'blue'];
+      return ['Inter', 'blue'];
     case 'D':
       return ['Digital', 'purple'];
     case 'E':
-      return ['Environmental', 'green'];
+      return ['Environment', 'green'];
     case 'F':
-      return ['Financial', 'yellow'];
+      return ['Finance', 'yellow'];
     case 'S':
       return ['Sport', 'pink'];
     case 'W':
