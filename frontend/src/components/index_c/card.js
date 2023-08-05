@@ -39,6 +39,7 @@ import { BsArrowRight, BsCircleFill } from 'react-icons/bs';
 import { useEffect, useState } from "react";
 import SearchBox from '../search';
 import ButtonSlider from '../slider';
+import FilterTabs from '../filter';
 
 const numSub = 0;
 
@@ -49,18 +50,24 @@ export default function Card() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [searchValue, setSearchValue] = useState('');
   const [selectedButtonId, setSelectedButtonId] = useState(''); // State to store the selected button's id
+  const [selectedProgram, setSelectedProgram] = useState('');
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const prog = '';
         const stat = '';
         let buttonId = selectedButtonId; // Create a new variable to hold the modified value
         if (buttonId === 'A') {
           buttonId = '';
         }
-        const apiUrl = `https://gened-api.azurewebsites.net/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${prog}&stat=${stat}&pageNum=0`;
-        // const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${prog}&stat=${stat}&pageNum=0`;
+        const programMap = {
+          0: '',
+          1: 'Thai',
+          2: 'Inter',
+        };
+        const ProgName = programMap[selectedProgram] || '';
+        // const apiUrl = `https://gened-api.azurewebsites.net/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${prog}&stat=${stat}&pageNum=0`;
+        const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${ProgName}&stat=${stat}&pageNum=0`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
@@ -70,7 +77,7 @@ export default function Card() {
     }
 
     fetchData();
-  }, [searchValue,selectedButtonId]);
+  }, [searchValue,selectedButtonId,selectedProgram]);
 
   const handleSearch = (value) => {
     setSearchValue(value); // Update searchValue when the user types
@@ -78,6 +85,10 @@ export default function Card() {
 
   const handleSelectButton = (buttonId) => {
     setSelectedButtonId(buttonId);
+  };
+
+  const handleProgram = (ProgType) => {
+    setSelectedProgram(ProgType);
   };
 
   const openModal = (index) => {
@@ -93,6 +104,7 @@ export default function Card() {
   return (
     <>
       {/* tata of god of years*/}
+      <FilterTabs onProgram={handleProgram}/>
       <ButtonSlider onSelectButton={handleSelectButton} />
       <SearchBox onSearch={handleSearch} />
       <div className='px-16'>
