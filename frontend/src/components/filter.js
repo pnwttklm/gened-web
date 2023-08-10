@@ -57,7 +57,7 @@ const LocationBoxButton = ({ label, selected, onClick, srcs }) => {
     );
 };
 
-export default function FilterTabs({ onProgram , onSemester }) {
+export default function FilterTabs({ onProgram , onSemester , onCredit }) {
     const [selectedTab, setSelectedTab] = useState(-1);
     const [selectedBoxes, setSelectedBoxes] = useState([
         0,
