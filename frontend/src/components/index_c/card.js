@@ -177,7 +177,12 @@ export default function Card() {
                 <h1 className='font-bold'>
                   คณะที่เปิดสอน
                 </h1>
+                <Text
+                noOfLines={1}
+                >
                 {getFacName(property.Faculty)[0]}
+                </Text>
+                
                 </Box>
 
               </Box>
