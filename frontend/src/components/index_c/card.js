@@ -53,6 +53,7 @@ export default function Card() {
   const [selectedProgram, setSelectedProgram] = useState('');
   const [selectedSemester, setSelectedSemester] = useState('');
   const [selectedCredit, setSelectedCredit] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -75,7 +76,7 @@ export default function Card() {
           9: 3
         };
         const RealCredit = creditMap[selectedCredit] || ''; // Filter with Credit
-        const apiUrl = `https://gened-api.azurewebsites.net/api/data/course?key=${searchValue}&lit=${buttonId}&cred=${RealCredit}&sem=${selectedSemester}&prog=${ProgName}&stat=${stat}&pageNum=0`;
+        const apiUrl = `https://gened-api.azurewebsites.net/api/data/course?key=${searchValue}&lit=${buttonId}&cred=${RealCredit}&sem=${selectedSemester}&prog=${ProgName}&loc=${selectedLocation}&stat=${stat}`;
         // const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${ProgName}&stat=${stat}&pageNum=0`;
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -86,7 +87,7 @@ export default function Card() {
     }
 
     fetchData();
-  }, [searchValue,selectedButtonId,selectedProgram,selectedSemester,selectedCredit]);
+  }, [searchValue,selectedButtonId,selectedProgram,selectedSemester,selectedCredit,selectedLocation]);
 
   const handleSearch = (value) => {
     setSearchValue(value); // Update searchValue when the user types
@@ -108,6 +109,10 @@ export default function Card() {
     setSelectedCredit(Credit);
   };
 
+  const handleLocation = (Location) => {
+    setSelectedLocation(Location);
+  };
+
   const openModal = (index) => {
     setSelectedItem(apiData[index]);
     setIsOpen(true);
@@ -121,7 +126,7 @@ export default function Card() {
   return (
     <>
       {/* tata of god of years*/}
-      <FilterTabs onProgram={handleProgram} onSemester={handleSemester} onCredit={handleCredit}/>
+      <FilterTabs onProgram={handleProgram} onSemester={handleSemester} onCredit={handleCredit} onLocation={handleLocation}/>
       <ButtonSlider onSelectButton={handleSelectButton} />
       <SearchBox onSearch={handleSearch} />
       <div className='px-16'>

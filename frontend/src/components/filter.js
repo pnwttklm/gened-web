@@ -57,7 +57,7 @@ const LocationBoxButton = ({ label, selected, onClick, srcs }) => {
     );
 };
 
-export default function FilterTabs({ onProgram , onSemester , onCredit }) {
+export default function FilterTabs({ onProgram , onSemester , onCredit , onLocation }) {
     const [selectedTab, setSelectedTab] = useState(-1);
     const [selectedBoxes, setSelectedBoxes] = useState([
         0,
@@ -201,6 +201,7 @@ const handleLocationClick = (boxIndex) => {
 
         return updatedSelectedBoxes;
     });
+    onLocation(boxIndex);
 };
 
 const handleNextClick = () => {
