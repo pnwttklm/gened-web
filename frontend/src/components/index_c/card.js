@@ -77,7 +77,7 @@ export default function Card() {
         };
         const RealCredit = creditMap[selectedCredit] || ''; // Filter with Credit
         const apiUrl = `https://gened-api.azurewebsites.net/api/data/course?key=${searchValue}&lit=${buttonId}&cred=${RealCredit}&sem=${selectedSemester}&prog=${ProgName}&loc=${selectedLocation}&stat=${stat}`;
-        // const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&prog=${ProgName}&stat=${stat}&pageNum=0`;
+        // const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&cred=${RealCredit}&sem=${selectedSemester}&prog=${ProgName}&loc=${selectedLocation}&stat=${stat}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         setApiData(data);
