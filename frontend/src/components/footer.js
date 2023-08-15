@@ -44,7 +44,7 @@ export default function () {
             <h1 className="text-white text-base">Powered by</h1>
             <div className="flex flex-col md:flex-row w-full gap-0 md:gap-10">
               <Link href='https://mahidol.ac.th' target='_blank'><Image height={100} width={300} src='/horizontal-boxblack-rgb.webp' alt="Mahidol Logo"/></Link>
-              <Link href='https://lifelong.mahidol.ac.th' target='_blank'><Image height={100} width={300} src='/lifelong_logo.webp' alt="Lifelong Logo"/></Link>
+              <Link href='https://lifelong.mahidol.ac.th' target='_blank'><Image height={100} width={250} src='/lifelong_logo.webp' alt="Lifelong Logo"/></Link>
               <Link href='https://int.mahidol.ac.th' target='_blank'><Image height={100} width={300} src='/iNT.svg' alt="Lifelong Logo"/></Link>
             </div>
             <div className="flex flex-row gap-6">
