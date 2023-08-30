@@ -57,7 +57,7 @@ const LocationBoxButton = ({ label, selected, onClick, srcs }) => {
     );
 };
 
-export default function FilterTabs({ onProgram, onSemester, onCredit, onLocation }) {
+export default function FilterTabs({ onProgram, onSemester, onCredit, onLocation, onDate }) {
     const [selectedTab, setSelectedTab] = useState(-1);
     const [selectedBoxes, setSelectedBoxes] = useState([
         0,
@@ -94,6 +94,7 @@ export default function FilterTabs({ onProgram, onSemester, onCredit, onLocation
             // Select the day if it's not already selected.
             return [...prevSelectedDays, dayValue];
         });
+        onDate(dayValue);
     };
 
     // ... (Rest of the component code remains unchanged)
