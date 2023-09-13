@@ -46,6 +46,7 @@ const numSub = 0;
 export default function Card() {
 
   const [apiData, setApiData] = useState([]);
+  const [Count_data, setCountData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [searchValue, setSearchValue] = useState('');
@@ -77,11 +78,15 @@ export default function Card() {
           9: 3
         };
         const RealCredit = creditMap[selectedCredit] || ''; // Filter with Credit
-        const apiUrl = `https://gened-api.azurewebsites.net/api/data/course?key=${searchValue}&lit=${buttonId}&cred=${RealCredit}&sem=${selectedSemester}&prog=${ProgName}&loc=${selectedLocation}&stat=${stat}&day=${selectedDate}`;
-        // const apiUrl = `http://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&cred=${RealCredit}&sem=${selectedSemester}&prog=${ProgName}&loc=${selectedLocation}&stat=${stat}`;
+        // const apiUrl = `https://gened-api.azurewebsites.net/api/data/course?key=${searchValue}&lit=${buttonId}&cred=${RealCredit}&sem=${selectedSemester}&prog=${ProgName}&loc=${selectedLocation}&stat=${stat}&day=${selectedDate}`;
+        const apiUrl = `https://www.s4nhxnu1.com:5000/api/data/course?key=${searchValue}&lit=${buttonId}&cred=${RealCredit}&sem=${selectedSemester}&prog=${ProgName}&loc=${selectedLocation}&stat=${stat}&day=${selectedDate}&time=`;
+        const apiCountUrl = `https://www.s4nhxnu1.com:5000/api/data/courseCount?key=${searchValue}&lit=${buttonId}&cred=${RealCredit}&sem=${selectedSemester}&prog=${ProgName}&loc=${selectedLocation}&stat=${stat}&day=${selectedDate}&time=`;
         const response = await fetch(apiUrl);
+        const Count_response = await fetch(apiCountUrl);
         const data = await response.json();
+        const Count_dat = await Count_response.json();
         setApiData(data);
+        setCountData(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
